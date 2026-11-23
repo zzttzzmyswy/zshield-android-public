@@ -39,7 +39,7 @@
 
 ## 3. 固定决策
 
-1. **标识**：applicationId 与 Kotlin 包均为 `top.zztweb.zshield`（名称为暂定，开源前可改）。仓库 `zzttzzmyswy/zshield-android`，暂为私有。
+1. **标识**：applicationId 与 Kotlin 包均为 `top.zztweb.zshield`。发行仓库为 `zzttzzmyswy/zshield-android-public`。
 2. **语言分层**：所有数据面（包处理、DNS、规则匹配、TLS）在 Rust core；Kotlin 只做控制面与 UI。JNI 仅通过 `top.zztweb.zshield.core.Native` 一个类，接口用 JSON 字符串或基本类型，避免大量 JNI 对象往返。
 3. **构建**：Gradle（Kotlin DSL）+ AGP 最新稳定版；Rust 通过 `cargo-ndk` 构建，由 Gradle 任务调用；release 只打 `arm64-v8a`（调试可加 `x86_64`）。Rust release profile：`opt-level="z"`、`lto=true`、`codegen-units=1`、`panic="abort"`、`strip=true`。启用 R8 + 资源压缩。不引入 Firebase / Play Services / 任何统计 SDK。
 4. **VPN 路由**：

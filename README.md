@@ -39,7 +39,7 @@
 
 ## 安装
 
-从 [Releases](https://github.com/zzttzzmyswy/zshield-android/releases) 下载 `zshield-<版本>-release.apk`
+从 [Releases](https://github.com/zzttzzmyswy/zshield-android-public/releases) 下载 `zshield-<版本>-release.apk`
 和同名 `.apk.sha256`，先校验再安装：
 
 ```bash
@@ -113,8 +113,8 @@ Android 11 起应用无法静默安装 CA 证书，因此这一步必须手动�
 ### 命令
 
 ```bash
-git clone https://github.com/zzttzzmyswy/zshield-android.git
-cd zshield-android
+git clone https://github.com/zzttzzmyswy/zshield-android-public.git
+cd zshield-android-public
 
 # 签名材料必须在仓库外。官方身份在本项目维护者手里；你自己构建就用自己的：
 ZSHIELD_KEYSTORE_DIR="$HOME/.config/zshield-contributor" scripts/gen-keystore.sh
