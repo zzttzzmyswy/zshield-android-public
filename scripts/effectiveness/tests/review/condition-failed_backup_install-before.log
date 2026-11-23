@@ -1,0 +1,28 @@
+device lock: taken by review-condition (/tmp/multica-task-1390409480/zs-condition-review-mtuo1fjc/failed_backup_install/zshield-device.lock)
+device lock: token 1235287-19204976 (pass LOCK_TOKEN=1235287-19204976 to a later command to renew or release it)
+
+=== installing the testcases.agrd.dev companion filter lists as user rules
+  appended element-hiding (0 lines)
+  appended generichide (0 lines)
+  appended css-rules (0 lines)
+  appended extended-css (0 lines)
+  appended scriptlets (0 lines)
+  appended important (0 lines)
+  appended badfilter (0 lines)
+  appended network-rules (0 lines)
+  appended redirect (0 lines)
+  appended csp (0 lines)
+  appended removeparam (0 lines)
+  appended removeheader (0 lines)
+  appended advanced-domain (0 lines)
+  appended subdocument (0 lines)
+  total 27 lines
+rules: installed 1587 char(s) / 1587 byte(s)
+  broadcast sent; waiting for the hot reload
+
+=== restoring the state recorded in /tmp/multica-task-1390409480/zs-condition-review-mtuo1fjc/failed_backup_install/out/condition-backup-review-condition.txt
+rules: restore REFUSED — /tmp/multica-task-1390409480/zs-condition-review-mtuo1fjc/failed_backup_install/out/condition-backup-review-condition.txt.rules.json records no readable rule set; nothing was changed
+  tunnel:    up (backup said up)
+  https:     off (backup said off)
+device lock: released (1235287-19204976)
+  user rules NOT restored — see the message above; /tmp/multica-task-1390409480/zs-condition-review-mtuo1fjc/failed_backup_install/out/condition-backup-review-condition.txt.rules.json is what was there

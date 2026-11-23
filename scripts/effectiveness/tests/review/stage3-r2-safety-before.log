@@ -1,0 +1,3 @@
+active_canonical_lock: take_exit=0; canonical_unchanged=True; accepted=True
+stale_takeover_interleaving: A_exit=0; B_exit=0; both_acquired=True; final_meta='owner=review\nissued=1794491545\nrenewed=1794491545\ntoken=B\n'
+literal_marker_backup: original='（空）'; known=True; stored=''; lossy=True

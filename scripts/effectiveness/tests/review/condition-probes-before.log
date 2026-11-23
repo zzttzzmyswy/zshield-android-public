@@ -1,0 +1,5 @@
+no_lock_cleanup: exit=0; attempted_rule_write=True; original_preserved=True
+restore_failure_reported: False
+failed_backup_install: exit=0; attempted_rule_write=True; original_preserved=False
+restore_failure_reported: True
+exit_trap_return_failure: process_exit=0 (expected nonzero)

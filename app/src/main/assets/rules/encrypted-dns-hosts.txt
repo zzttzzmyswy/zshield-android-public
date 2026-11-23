@@ -1,0 +1,106 @@
+# Public encrypted-DNS endpoints (DoH / DoT), blocked when "blockEncryptedDnsBypass" is on.
+#
+# Why this list exists: a browser that switches to DNS-over-HTTPS resolves names outside the tunnel,
+# so DNS filtering silently stops working for that app. Refusing the TLS connection to these hosts
+# (and TCP/853 for DoT) forces the app back to plain DNS, which the tunnel hijacks.
+#
+# Our own upstreams are NOT affected: the core's outbound sockets are excluded from the tunnel with
+# addDisallowedApplication, so this list never sees them. Two entries below (dns.alidns.com,
+# doh.pub) *are* the default upstreams — that is intentional, so a browser cannot use them either.
+#
+# Format: one hostname per line, '#' comments. A listed name also matches its subdomains.
+# Sources (checked 2026-11-08):
+#   Google Public DNS      https://developers.google.com/speed/public-dns/docs/doh
+#   Cloudflare             https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/
+#   Quad9                  https://www.quad9.net/news/blog/doh-with-quad9-dns-servers/
+#   AdGuard DNS            https://adguard-dns.io/kb/general/dns-providers/
+#   NextDNS                https://nextdns.io/
+#   OpenDNS / Cisco        https://doc.opendns.com/
+#   AliDNS (Alibaba)       https://help.aliyun.com/zh/dns/
+#   DNSPod / Tencent       https://docs.dnspod.cn/
+#   doh.pub (Tencent)      https://doh.pub/
+#   360 Secure DNS         https://sdns.360.net/
+#   DNS.SB                 https://dns.sb/doh/
+#   Mullvad                https://mullvad.net/en/help/dns-over-https-and-dns-over-tls/
+#   ControlD               https://docs.controld.com/docs/dns-over-https
+#   BlahDNS                https://blahdns.com/
+#   LibreDNS               https://libredns.gr/
+#   Applied Privacy        https://appliedprivacy.net/
+
+# --- Google ---
+dns.google
+dns.google.com
+8888.google
+
+# --- Cloudflare ---
+one.one.one.one
+cloudflare-dns.com
+1dot1dot1dot1.cloudflare-dns.com
+mozilla.cloudflare-dns.com
+security.cloudflare-dns.com
+family.cloudflare-dns.com
+
+# --- Quad9 ---
+dns.quad9.net
+dns9.quad9.net
+dns10.quad9.net
+dns11.quad9.net
+
+# --- AdGuard ---
+dns.adguard.com
+dns.adguard-dns.com
+dns-family.adguard.com
+dns-unfiltered.adguard.com
+dns.adguard-dns.io
+
+# --- NextDNS ---
+dns.nextdns.io
+nextdns.io
+
+# --- OpenDNS / Cisco ---
+doh.opendns.com
+doh.familyshield.opendns.com
+doh.familyguard.opendns.com
+
+# --- AliDNS (Alibaba) ---
+dns.alidns.com
+doh.alidns.com
+
+# --- Tencent DNSPod / doh.pub ---
+doh.pub
+dot.pub
+dns.dnspod.cn
+doh.tencent.com
+
+# --- 360 Secure DNS ---
+doh.360.cn
+dns.360.cn
+
+# --- DNS.SB ---
+doh.dns.sb
+dot.dns.sb
+dns.sb
+
+# --- Mullvad ---
+dns.mullvad.net
+doh.mullvad.net
+
+# --- ControlD ---
+dns.controld.com
+freedns.controld.com
+
+# --- BlahDNS ---
+doh-fi.blahdns.com
+doh-jp.blahdns.com
+doh-de.blahdns.com
+
+# --- LibreDNS ---
+doh.libredns.gr
+dot.libredns.gr
+
+# --- Applied Privacy ---
+doh.applied-privacy.net
+
+# --- Firefox / Chrome canary resolvers ---
+firefox.dns.nextdns.io
+chrome.cloudflare-dns.com

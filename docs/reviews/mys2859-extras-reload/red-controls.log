@@ -1,0 +1,273 @@
+   Compiling zshield-core v0.1.0 (/zshield/mys2859-extras-reload/core)
+    Finished `release` profile [optimized] target(s) in 2m 00s
+     Running `/zshield/target-mys2859/release/examples/extras_reload_identity /tmp/mys2859-R2`
+workdir: /tmp/mys2859-R2
+[zshield:info] rss: compile start = 4224 KiB
+[zshield:info] compile stage engine+serialize: 1 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 71 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] compiled rules loaded in 0 ms
+[zshield:info] loaded compiled rules: 0 block, 0 exception, 0 unsupported, 1 network-only (/tmp/mys2859-R2/extras_only/compiled)
+[zshield:info] rss: dns rules loaded = -284 KiB (6500 -> 6216 KiB)
+[zshield:info] rules: 1 files, 0 block, 0 exception, 0 unsupported, 1 network-only
+[zshield:info] rss: engine payload released = -368 KiB (6592 -> 6224 KiB)
+[zshield:info] engine loaded in 0 ms, 917 B (11 redirect resources)
+[zshield:info] extra modifiers loaded: 0 popup, 0 denyallow, 1 removeparam, 0 ms
+[zshield:info] rss: http engine loaded = +396 KiB (6216 -> 6612 KiB)
+[zshield:info] tunnel policy: mode full, mtu 1500, quic true, encrypted-dns true (0 hosts), timeouts tcp 7200s/udp 60s, sniff 4096B/3000ms, http head 8192B
+[zshield:info] https filtering off: 443 connections are relayed verbatim
+[zshield:info] engine started, handle 1
+[zshield:info] rules identity: event=start ok=true handle=1 generation=1 pid=4092362 dns=sha256:48a0b034be10f04390b8d623a3fcdba9e4ef6c0106191bd23c06438d1ec055d9:16 engine=sha256:d191e7eac13b06f863c4588d43469f85f6f47e5a2b02d92a91453722d53ea4f8:917 extras=sha256:20e03bcd88cd77c3642cba89b590634599387e828e49b41b2a1110daa545e611:51
+[zshield:info] tunnel stack up: mode Full, mtu 1500
+PASS extras_only/baseline_rule_in_force  [got https://example.test/p?new=2&keep=3]
+[zshield:info] rss: compile start = 7472 KiB
+[zshield:info] compile stage engine+serialize: 6 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 71 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 7 ms
+PASS extras_only/dns_bin_identical  [this case is only about extras]
+PASS extras_only/engine_bin_identical  [this case is only about extras]
+PASS extras_only/extras_changed  [the premise of the case]
+PASS extras_only/fingerprint_dns_engine_equal  [dns.bin and engine.bin are unchanged, extras.txt is not]
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+PASS extras_only/reload_returned_true
+FAIL extras_only/new_rule_in_force  [want old kept/new removed, got https://example.test/p?new=2&keep=3]
+FAIL extras_only/identity_updated  [the extras identity must describe the rules now in force]
+FAIL extras_only/identity_matches_payload  [the identity must hash the bytes that were installed]
+FAIL extras_only/generation_advanced  [1 -> 1]
+[zshield:info] tunnel loop stopped
+[zshield:info] engine stopped, handle 1
+[zshield:info] rss: compile start = 7592 KiB
+[zshield:info] compile stage engine+serialize: 2 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 0 removeparam, extras.txt 20 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 1 dns rules (1 block / 0 exception), 0 network, 0 unsupported, dns.bin 49 B, engine.bin 993 B, 2 ms
+[zshield:info] compiled rules loaded in 0 ms
+[zshield:info] loaded compiled rules: 1 block, 0 exception, 0 unsupported, 0 network-only (/tmp/mys2859-R2/transitions/compiled)
+[zshield:info] rss: dns rules loaded = -8 KiB (6972 -> 6964 KiB)
+[zshield:info] rules: 1 files, 1 block, 0 exception, 0 unsupported, 0 network-only
+[zshield:info] rss: engine payload released = -368 KiB (7332 -> 6964 KiB)
+[zshield:info] engine loaded in 0 ms, 973 B (11 redirect resources)
+[zshield:info] rss: http engine loaded = +0 KiB (6964 -> 6964 KiB)
+[zshield:info] tunnel policy: mode full, mtu 1500, quic true, encrypted-dns true (0 hosts), timeouts tcp 7200s/udp 60s, sniff 4096B/3000ms, http head 8192B
+[zshield:info] https filtering off: 443 connections are relayed verbatim
+[zshield:info] engine started, handle 2
+[zshield:info] rules identity: event=start ok=true handle=2 generation=2 pid=4092362 dns=sha256:a6edd28a8d16be164c697cfe8dc6e8870a5dd41a71b3086893c44dc3018e60f4:29 engine=sha256:7f9284031c9d8e5851e0d511caa01e3030fc06c56edb9d1ded9154c03ad81fbc:973 extras=-
+PASS transitions/absent_at_start  [no extras.txt, so the component is absent]
+[zshield:info] rss: compile start = 6984 KiB
+[zshield:info] tunnel stack up: mode Full, mtu 1500
+[zshield:info] compile stage engine+serialize: 0 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 68 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] extra modifiers loaded: 0 popup, 0 denyallow, 1 removeparam, 0 ms
+[zshield:info] rss: after reload (trimmed) = 7012 KiB
+[zshield:info] rules reloaded: 0 block, 0 exception, 0 unsupported (neither layer can use), 1 network-only (engine rules); 0 cache entries dropped; engine 917 B
+[zshield:info] rules identity: event=swap ok=true handle=2 generation=3 pid=4092362 dns=sha256:48a0b034be10f04390b8d623a3fcdba9e4ef6c0106191bd23c06438d1ec055d9:16 engine=sha256:d191e7eac13b06f863c4588d43469f85f6f47e5a2b02d92a91453722d53ea4f8:917 extras=sha256:bfac1f3566acaf9da3b22955d24796fbef030450197ddecb8bdf04e8893cc2b0:48
+PASS transitions/added_applies  [reloaded=true got https://shop.test/p?two=2&three=3]
+[zshield:info] rss: compile start = 7392 KiB
+[zshield:info] compile stage engine+serialize: 1 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 68 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+FAIL transitions/changed_applies  [reloaded=true got https://shop.test/p?two=2&three=3]
+FAIL transitions/changed_identity  [different rules, different identity]
+[zshield:info] rss: compile start = 7488 KiB
+[zshield:info] compile stage engine+serialize: 1 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 0 removeparam, extras.txt 20 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 1 dns rules (1 block / 0 exception), 0 network, 0 unsupported, dns.bin 48 B, engine.bin 993 B, 1 ms
+[zshield:info] extra modifiers loaded: 0 popup, 0 denyallow, 0 removeparam, 0 ms
+[zshield:info] rss: after reload (trimmed) = 7044 KiB
+[zshield:info] rules reloaded: 1 block, 0 exception, 0 unsupported (neither layer can use), 0 network-only (engine rules); 0 cache entries dropped; engine 973 B
+[zshield:info] rules identity: event=swap ok=true handle=2 generation=4 pid=4092362 dns=sha256:c2d53c1784cdcb2219d8e8e1af7343b4f2ea1c92ca6cbac8cdac84434f85c254:28 engine=sha256:5c0edf42e23df19e539e0b1db9ac72994d373c821cd215bc4ec9c6e05c89664d:973 extras=sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855:0
+PASS transitions/emptied_applies  [reloaded=true got https://shop.test/p?one=1&two=2&three=3]
+[zshield:info] rss: compile start = 7044 KiB
+[zshield:info] compile stage engine+serialize: 0 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 70 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] extra modifiers loaded: 0 popup, 0 denyallow, 1 removeparam, 1 ms
+[zshield:info] rss: after reload (trimmed) = 7060 KiB
+[zshield:info] rules reloaded: 0 block, 0 exception, 0 unsupported (neither layer can use), 1 network-only (engine rules); 0 cache entries dropped; engine 917 B
+[zshield:info] rules identity: event=swap ok=true handle=2 generation=5 pid=4092362 dns=sha256:48a0b034be10f04390b8d623a3fcdba9e4ef6c0106191bd23c06438d1ec055d9:16 engine=sha256:d191e7eac13b06f863c4588d43469f85f6f47e5a2b02d92a91453722d53ea4f8:917 extras=sha256:46749463f1838efc6d81f2e97098c35cb3522082a2362878b517de692c041725:50
+PASS transitions/readded_applies  [reloaded=true got https://shop.test/p?one=1&two=2]
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+FAIL transitions/deleted_applies  [reloaded=true got https://shop.test/p?one=1&two=2]
+[zshield:info] tunnel loop stopped
+[zshield:info] engine stopped, handle 2
+[zshield:info] rss: compile start = 7408 KiB
+[zshield:info] compile stage engine+serialize: 9 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 69 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 10 ms
+[zshield:info] compiled rules loaded in 0 ms
+[zshield:info] loaded compiled rules: 0 block, 0 exception, 0 unsupported, 1 network-only (/tmp/mys2859-R2/corrupt/compiled)
+[zshield:info] rss: dns rules loaded = -372 KiB (7428 -> 7056 KiB)
+[zshield:info] rules: 1 files, 0 block, 0 exception, 0 unsupported, 1 network-only
+[zshield:info] rss: engine payload released = -364 KiB (7420 -> 7056 KiB)
+[zshield:info] engine loaded in 3 ms, 917 B (11 redirect resources)
+[zshield:info] extra modifiers loaded: 0 popup, 0 denyallow, 1 removeparam, 0 ms
+[zshield:info] rss: http engine loaded = +364 KiB (7056 -> 7420 KiB)
+[zshield:info] tunnel policy: mode full, mtu 1500, quic true, encrypted-dns true (0 hosts), timeouts tcp 7200s/udp 60s, sniff 4096B/3000ms, http head 8192B
+[zshield:info] https filtering off: 443 connections are relayed verbatim
+[zshield:info] engine started, handle 3
+[zshield:info] rules identity: event=start ok=true handle=3 generation=6 pid=4092362 dns=sha256:48a0b034be10f04390b8d623a3fcdba9e4ef6c0106191bd23c06438d1ec055d9:16 engine=sha256:d191e7eac13b06f863c4588d43469f85f6f47e5a2b02d92a91453722d53ea4f8:917 extras=sha256:8bd1c1a3d46a874ec12570c3ae298766f4e43f9128c2233b98866f9d86e8b63a:49
+[zshield:info] tunnel stack up: mode Full, mtu 1500
+PASS corrupt/baseline_rule_in_force  [got https://shop.test/p?stay=2]
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+FAIL corrupt/reload_reports_failure  [a component that could not be installed is not a successful reload]
+PASS corrupt/rules_in_force_kept  [a checksum failure must not delete the rules, got https://shop.test/p?stay=2]
+PASS corrupt/identity_unchanged  [the identity still describes the rules in force]
+PASS corrupt/generation_unchanged  [a failed swap advances no generation]
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+FAIL corrupt/retry_succeeds  [rewriting the artifact must be picked up]
+[zshield:info] tunnel loop stopped
+[zshield:info] engine stopped, handle 3
+[zshield:info] rss: compile start = 7556 KiB
+[zshield:info] compile stage engine+serialize: 1 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 71 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] compiled rules loaded in 0 ms
+[zshield:info] loaded compiled rules: 0 block, 0 exception, 0 unsupported, 1 network-only (/tmp/mys2859-R2/unchanged/compiled)
+[zshield:info] rss: dns rules loaded = -368 KiB (7440 -> 7072 KiB)
+[zshield:info] rules: 1 files, 0 block, 0 exception, 0 unsupported, 1 network-only
+[zshield:info] rss: engine payload released = -364 KiB (7436 -> 7072 KiB)
+[zshield:info] engine loaded in 2 ms, 917 B (11 redirect resources)
+[zshield:info] extra modifiers loaded: 0 popup, 0 denyallow, 1 removeparam, 0 ms
+[zshield:info] rss: http engine loaded = +364 KiB (7072 -> 7436 KiB)
+[zshield:info] tunnel policy: mode full, mtu 1500, quic true, encrypted-dns true (0 hosts), timeouts tcp 7200s/udp 60s, sniff 4096B/3000ms, http head 8192B
+[zshield:info] https filtering off: 443 connections are relayed verbatim
+[zshield:info] engine started, handle 4
+[zshield:info] rules identity: event=start ok=true handle=4 generation=7 pid=4092362 dns=sha256:48a0b034be10f04390b8d623a3fcdba9e4ef6c0106191bd23c06438d1ec055d9:16 engine=sha256:d191e7eac13b06f863c4588d43469f85f6f47e5a2b02d92a91453722d53ea4f8:917 extras=sha256:20e03bcd88cd77c3642cba89b590634599387e828e49b41b2a1110daa545e611:51
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] tunnel stack up: mode Full, mtu 1500
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+PASS unchanged/objects_reused_20x  [an unchanged artifact set must not rebuild any of the three rule sets]
+PASS unchanged/generation_unchanged  [a skipped reload installs nothing]
+[zshield:info] rss: compile start = 7524 KiB
+[zshield:info] compile stage engine+serialize: 1 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 71 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+FAIL unchanged/change_still_lands  [got https://example.test/p?new=2&keep=3]
+[zshield:info] tunnel loop stopped
+[zshield:info] engine stopped, handle 4
+[zshield:info] rss: compile start = 7624 KiB
+[zshield:info] compile stage engine+serialize: 0 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 68 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] compiled rules loaded in 0 ms
+[zshield:info] loaded compiled rules: 0 block, 0 exception, 0 unsupported, 1 network-only (/tmp/mys2859-R2/ab/compiled)
+[zshield:info] rss: dns rules loaded = -364 KiB (7460 -> 7096 KiB)
+[zshield:info] rules: 1 files, 0 block, 0 exception, 0 unsupported, 1 network-only
+[zshield:info] rss: engine payload released = -364 KiB (7460 -> 7096 KiB)
+[zshield:info] engine loaded in 0 ms, 917 B (11 redirect resources)
+[zshield:info] extra modifiers loaded: 0 popup, 0 denyallow, 1 removeparam, 0 ms
+[zshield:info] rss: http engine loaded = +364 KiB (7096 -> 7460 KiB)
+[zshield:info] tunnel policy: mode full, mtu 1500, quic true, encrypted-dns true (0 hosts), timeouts tcp 7200s/udp 60s, sniff 4096B/3000ms, http head 8192B
+[zshield:info] https filtering off: 443 connections are relayed verbatim
+[zshield:info] engine started, handle 5
+[zshield:info] rules identity: event=start ok=true handle=5 generation=8 pid=4092362 dns=sha256:48a0b034be10f04390b8d623a3fcdba9e4ef6c0106191bd23c06438d1ec055d9:16 engine=sha256:d191e7eac13b06f863c4588d43469f85f6f47e5a2b02d92a91453722d53ea4f8:917 extras=sha256:6c977bb47a1a47689cc46d096ecf447bfa0687f79c0fa8008ee959980a409cc4:48
+PASS ab/baseline
+[zshield:info] tunnel stack up: mode Full, mtu 1500
+[zshield:info] rss: compile start = 7584 KiB
+[zshield:info] compile stage engine+serialize: 17 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 67 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 18 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7532 KiB
+[zshield:info] compile stage engine+serialize: 14 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 68 B
+[zshield:info] compile stage extra modifiers: 1 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 16 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7584 KiB
+[zshield:info] compile stage engine+serialize: 3 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 67 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 4 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7596 KiB
+[zshield:info] compile stage engine+serialize: 2 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 68 B
+[zshield:info] compile stage extra modifiers: 2 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 5 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7632 KiB
+[zshield:info] compile stage engine+serialize: 4 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 67 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 5 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7636 KiB
+[zshield:info] compile stage engine+serialize: 1 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 68 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7632 KiB
+[zshield:info] compile stage engine+serialize: 1 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 67 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7628 KiB
+[zshield:info] compile stage engine+serialize: 1 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 68 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7628 KiB
+[zshield:info] compile stage engine+serialize: 0 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 67 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 1 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7628 KiB
+[zshield:info] compile stage engine+serialize: 1 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 68 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 2 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7628 KiB
+[zshield:info] compile stage engine+serialize: 0 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 67 B
+[zshield:info] compile stage extra modifiers: 2 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 3 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+[zshield:info] rss: compile start = 7632 KiB
+[zshield:info] compile stage engine+serialize: 2 ms
+[zshield:info] extra modifiers: 0 popup, 0 denyallow, 1 removeparam, extras.txt 68 B
+[zshield:info] compile stage extra modifiers: 0 ms
+[zshield:info] compiled 1 lists: 0 dns rules (0 block / 0 exception), 1 network, 0 unsupported, dns.bin 36 B, engine.bin 937 B, 2 ms
+[zshield:info] rules reload: artifacts unchanged, keeping the loaded rule sets
+FAIL ab/every_round_consistent  [6 mismatched rounds, 0 failed reloads of 12]
+[zshield:info] tunnel loop stopped
+[zshield:info] engine stopped, handle 5
+
+controls: 17 passed, 11 failed

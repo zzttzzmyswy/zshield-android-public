@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+ system splash: brand surface + the launcher shield, no white flash. -->
+    <style name="Theme.ZShield" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/zshield_surface</item>
+        <item name="android:colorAccent">@color/zshield_primary</item>
+        <item name="android:colorPrimary">@color/zshield_primary</item>
+        <item name="android:windowSplashScreenBackground">@color/zshield_surface</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/zshield_brand</item>
+    </style>
+</resources>

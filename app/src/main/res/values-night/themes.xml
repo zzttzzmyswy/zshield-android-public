@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ZShield" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/zshield_surface</item>
+        <item name="android:colorAccent">@color/zshield_primary</item>
+        <item name="android:colorPrimary">@color/zshield_primary</item>
+    </style>
+</resources>

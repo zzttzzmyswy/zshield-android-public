@@ -1,0 +1,617 @@
+ZShield 净盾 — 第三方组件通知 / Third-Party Notices
+
+本文件随 APK 分发，说明 ZShield 中包含哪些第三方组件、各自以什么条款授权，
+以及条款正文在 assets/licenses/ 下的哪个文件里。
+
+ZShield 净盾以 GNU 通用公共许可证第 3 版或更高版本授权 (GPL-3.0-or-later)。
+完整条款见 GPL-3.0-or-later.txt；完整对应源代码随每个版本公开。
+
+本目录下的条款文件全部取自上游发布包的原始文件（逐字节复制，未改写），
+由 scripts/gen-license-assets.py 从锁定的依赖集生成，可重新生成并逐字节比对。
+
+==============================================================================
+一、uBlock Origin scriptlet（代码编入 libzshield.so）
+==============================================================================
+
+本 APK 的本地核心库内含从 uBlock Origin 逐字复制的 JavaScript scriptlet 代码。
+
+    uBlock Origin 1.76.0
+    https://github.com/gorhill/uBlock
+    commit aa9236cb351e369cbb68113dbe8175b87f3cd134
+    Copyright (C) 2019-present Raymond Hill
+    Copyright (C) 2022-present Raymond Hill (src/js/urlskip.js)
+    Copyright (C) 2025-present Raymond Hill (src/js/jsonpath.js 等)
+    Copyright (C) 2026-present Raymond Hill (prevent-navigation.js, vod.js)
+
+    本程序是自由软件：你可以依据自由软件基金会发布的 GNU 通用公共许可证第 3 版
+    或（由你选择）任何更高版本的条款重新分发和/or 修改它。
+
+    本程序分发时希望它有用，但不提供任何担保，甚至不提供适销性或特定用途适用性
+    的默示担保。详见 GNU 通用公共许可证。
+
+    你应当已随本程序收到 GNU 通用公共许可证的副本；如果没有，见
+    <https://www.gnu.org/licenses/>。
+
+修改后的首选形式：scriptlet 代码由 scripts/gen-scriptlet-resources.mjs 从上述
+uBlock Origin 修订生成，不经手工编辑；生成办法见源码仓库 docs/THIRD_PARTY.md。
+
+代码来源文件与各自的版权行：
+
+    src/js/resources/abort-current-script.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/attribute.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/cookie.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/href-sanitizer.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/json-edit.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/json-prune.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/localstorage.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/noeval.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/object-prune.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/prevent-addeventlistener.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/prevent-bab.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/prevent-dialog.js
+        Copyright (C) 2025-present Raymond Hill
+    src/js/resources/prevent-fetch.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/prevent-innerHTML.js
+        Copyright (C) 2025-present Raymond Hill
+    src/js/resources/prevent-navigation.js
+        Copyright (C) 2026-present Raymond Hill
+    src/js/resources/prevent-settimeout.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/prevent-xhr.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/proxy-apply.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/run-at.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/safe-self.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/scriptlets.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/set-constant.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/spoof-css.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/stack-trace.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/utils.js
+        Copyright (C) 2019-present Raymond Hill
+    src/js/resources/vod.js
+        Copyright (C) 2026-present Raymond Hill
+    src/js/jsonpath.js
+        Copyright (C) 2025-present Raymond Hill
+    src/js/urlskip.js
+        Copyright (C) 2022-present Raymond Hill
+
+==============================================================================
+二、Rust 运行时依赖（139 个 crate，代码链接进 libzshield.so）
+==============================================================================
+
+每个 crate 后面列出它在上游发布包中自带的条款文件，文件已原样收在本目录。
+同一份正文被多个 crate 共用时只保留一个文件，此处逐条指回。
+
+    adblock 0.13.5  [MPL-2.0]
+        -> adblock-0.13.5-LICENSE.txt
+    addr 0.15.6  [MIT/Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-f09adf50.txt
+    adler2 2.0.1  [0BSD OR MIT OR Apache-2.0]
+        -> adler2-2.0.1-LICENSE-0BSD.txt
+        -> adler2-2.0.1-LICENSE-APACHE.txt
+        -> shared-MIT-23f18e03.txt
+    aho-corasick 1.1.5  [Unlicense OR MIT]
+        -> shared-MIT-0f96a838.txt
+        -> shared-Unlicense-7e12e5df.txt
+        -> shared-dual-license-01c266bc.txt
+    arrayvec 0.7.8  [MIT OR Apache-2.0]
+        -> arrayvec-0.7.8-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    asn1-rs 0.7.2  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-a5c61b93.txt
+    atomic-waker 1.1.2  [Apache-2.0 OR MIT]
+        -> atomic-waker-1.1.2-LICENSE-THIRD-PARTY.txt
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-23f18e03.txt
+    base64 0.22.1  [MIT OR Apache-2.0]
+        -> base64-0.22.1-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    base64 0.23.1  [MIT OR Apache-2.0]
+        -> base64-0.23.1-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    bit-vec 0.9.1  [Apache-2.0 OR MIT]
+        -> bit-vec-0.9.1-LICENSE-MIT.txt
+        -> shared-Apache-2.0-8173d5c2.txt
+    bitflags 1.3.2  [MIT/Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-6485b8ed.txt
+    bitflags 2.13.2  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-6485b8ed.txt
+    block-buffer 0.10.4  [MIT OR Apache-2.0]
+        -> block-buffer-0.10.4-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a9040321.txt
+    byteorder 1.5.0  [Unlicense OR MIT]
+        -> shared-MIT-0f96a838.txt
+        -> shared-Unlicense-7e12e5df.txt
+        -> shared-dual-license-01c266bc.txt
+    bytes 1.12.1  [MIT]
+        -> bytes-1.12.1-LICENSE.txt
+    cfg-if 1.0.5  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-378f5840.txt
+    combine 4.6.9  [MIT]
+        -> combine-4.6.9-LICENSE.txt
+    cpufeatures 0.2.17  [MIT OR Apache-2.0]
+        -> cpufeatures-0.2.17-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a9040321.txt
+    crc32fast 1.5.4  [MIT OR Apache-2.0]
+        -> crc32fast-1.5.4-LICENSE-MIT.txt
+        -> shared-Apache-2.0-c6596eb7.txt
+    crypto-common 0.1.7  [MIT OR Apache-2.0]
+        -> crypto-common-0.1.7-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a9040321.txt
+    cssparser 0.35.0  [MPL-2.0]
+        -> cssparser-0.35.0-LICENSE.txt
+    data-encoding 2.11.1  [MIT]
+        -> data-encoding-2.11.1-LICENSE.txt
+    defmt 1.2.0  [MIT OR Apache-2.0]
+        -> defmt-1.2.0-LICENSE-MIT.txt
+        -> shared-Apache-2.0-8173d5c2.txt
+    der-parser 10.0.0  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-a5c61b93.txt
+    deranged 0.5.9  [MIT OR Apache-2.0]
+        -> deranged-0.5.9-LICENSE-Apache.txt
+        -> deranged-0.5.9-LICENSE-MIT.txt
+    derive_more 2.1.1  [MIT]
+        -> derive_more-2.1.1-LICENSE.txt
+    digest 0.10.7  [MIT OR Apache-2.0]
+        -> digest-0.10.7-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a9040321.txt
+    dtoa 1.0.11  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-62c7a1e3.txt
+        -> shared-MIT-23f18e03.txt
+    dtoa-short 0.3.5  [MPL-2.0]
+        -> dtoa-short-0.3.5-LICENSE.txt
+    either 1.19.0  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-7576269e.txt
+    equivalent 1.0.3  [Apache-2.0 OR MIT]
+        -> equivalent-1.0.3-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    flatbuffers 25.12.19  [Apache-2.0]
+        -> shared-Apache-2.0-cfc7749b.txt
+    flate2 1.1.11  [MIT OR Apache-2.0]
+        -> flate2-1.1.11-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    fnv 1.0.7  [Apache-2.0 / MIT]
+        -> fnv-1.0.7-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    foldhash 0.2.0  [Zlib]
+        -> foldhash-0.2.0-LICENSE.txt
+    futures-channel 0.3.34  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-275c491d.txt
+        -> shared-MIT-6652c868.txt
+    futures-core 0.3.34  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-275c491d.txt
+        -> shared-MIT-6652c868.txt
+    futures-sink 0.3.34  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-275c491d.txt
+        -> shared-MIT-6652c868.txt
+    generic-array 0.14.7  [MIT]
+        -> generic-array-0.14.7-LICENSE.txt
+    getrandom 0.2.17  [MIT OR Apache-2.0]
+        -> getrandom-0.2.17-LICENSE-APACHE.txt
+        -> getrandom-0.2.17-LICENSE-MIT.txt
+    h2 0.4.20  [MIT]
+        -> h2-0.4.20-LICENSE.txt
+    hash32 0.3.1  [MIT OR Apache-2.0]
+        -> hash32-0.3.1-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    hashbrown 0.17.1  [MIT OR Apache-2.0]
+        -> hashbrown-0.17.1-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    heapless 0.9.3  [MIT OR Apache-2.0]
+        -> heapless-0.9.3-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    http 1.5.0  [MIT OR Apache-2.0]
+        -> http-1.5.0-LICENSE-APACHE.txt
+        -> http-1.5.0-LICENSE-MIT.txt
+    http-body 1.1.0  [MIT]
+        -> shared-MIT-248378d0.txt
+    http-body-util 0.1.5  [MIT]
+        -> shared-MIT-248378d0.txt
+    hyper 1.12.0  [MIT]
+        -> hyper-1.12.0-LICENSE.txt
+    hyper-util 0.1.21  [MIT]
+        -> hyper-util-0.1.21-LICENSE.txt
+    icu_collections 2.4.0  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    icu_locale_core 2.4.0  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    icu_normalizer 2.4.0  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    icu_normalizer_data 2.4.0  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    icu_properties 2.4.0  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    icu_properties_data 2.4.0  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    icu_provider 2.4.0  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    idna 1.1.0  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-b38f11f6.txt
+    idna_adapter 1.2.2  [Apache-2.0 OR MIT]
+        -> idna_adapter-1.2.2-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    indexmap 2.14.2  [Apache-2.0 OR MIT]
+        -> indexmap-2.14.2-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    itertools 0.14.0  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-7576269e.txt
+    itoa 1.0.18  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-62c7a1e3.txt
+        -> shared-MIT-23f18e03.txt
+    jni 0.22.4  [MIT OR Apache-2.0]
+        -> jni-0.22.4-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    jni-sys 0.4.1  [MIT OR Apache-2.0]
+        -> jni-sys-0.4.1-LICENSE-MIT.txt
+        -> shared-Apache-2.0-c6596eb7.txt
+    lazy_static 1.5.1  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-23f18e03.txt
+    libc 0.2.191  [MIT OR Apache-2.0]
+        -> libc-0.2.191-LICENSE-MIT.txt
+        -> shared-Apache-2.0-62c7a1e3.txt
+    litemap 0.8.3  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    log 0.4.35  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-6485b8ed.txt
+    lru 0.19.0  [MIT]
+        -> lru-0.19.0-LICENSE.txt
+    managed 0.8.0  [0BSD]
+        -> managed-0.8.0-LICENSE-0BSD.txt
+    memchr 2.8.3  [Unlicense OR MIT]
+        -> shared-MIT-0f96a838.txt
+        -> shared-Unlicense-7e12e5df.txt
+        -> shared-dual-license-01c266bc.txt
+    minimal-lexical 0.2.1  [MIT/Apache-2.0]
+        -> minimal-lexical-0.2.1-LICENSE.md.txt
+        -> shared-Apache-2.0-8173d5c2.txt
+        -> shared-MIT-23f18e03.txt
+    miniz_oxide 0.9.1  [MIT OR Zlib OR Apache-2.0]
+        -> miniz_oxide-0.9.1-LICENSE-MIT.md.txt
+        -> miniz_oxide-0.9.1-LICENSE-ZLIB.md.txt
+        -> miniz_oxide-0.9.1-LICENSE.txt
+        -> shared-Apache-2.0-0d542e0c.txt
+    mio 1.2.4  [MIT]
+        -> mio-1.2.4-LICENSE.txt
+    new_debug_unreachable 1.0.6  [MIT]
+        -> new_debug_unreachable-1.0.6-LICENSE-MIT.txt
+    nom 7.1.3  [MIT]
+        -> nom-7.1.3-LICENSE.txt
+    num-bigint 0.4.8  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-6485b8ed.txt
+    num-integer 0.1.47  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-6485b8ed.txt
+    num-traits 0.2.19  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-6485b8ed.txt
+    oid-registry 0.8.1  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-a5c61b93.txt
+    once_cell 1.21.4  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-23f18e03.txt
+    pem 4.0.0  [MIT]
+        -> pem-4.0.0-LICENSE.md.txt
+    percent-encoding 2.3.2  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-b38f11f6.txt
+    phf 0.11.3  [MIT]
+        -> phf-0.11.3-LICENSE.txt
+    pin-project-lite 0.2.17  [Apache-2.0 OR MIT]
+        -> shared-Apache-2.0-0d542e0c.txt
+        -> shared-MIT-23f18e03.txt
+    potential_utf 0.1.6  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    powerfmt 0.2.1  [MIT OR Apache-2.0]
+        -> powerfmt-0.2.1-LICENSE-Apache.txt
+        -> powerfmt-0.2.1-LICENSE-MIT.txt
+    precomputed-hash 0.1.1  [MIT]
+        -> precomputed-hash-0.1.1-LICENSE.txt
+    psl 2.1.248  [MIT/Apache-2.0]
+        -> shared-MIT-f09adf50.txt
+    psl-types 2.0.11  [MIT/Apache-2.0]
+        -> psl-types-2.0.11-LICENSE.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    rcgen 0.14.10  [MIT OR Apache-2.0]
+        -> rcgen-0.14.10-LICENSE.txt
+    regex 1.13.1  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-6485b8ed.txt
+    regex-automata 0.4.18  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-6485b8ed.txt
+    regex-syntax 0.8.11  [MIT OR Apache-2.0]
+        -> regex-syntax-0.8.11-LICENSE-UNICODE.txt
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-6485b8ed.txt
+    ring 0.17.14  [Apache-2.0 AND ISC]
+        -> ring-0.17.14-LICENSE-BoringSSL.txt
+        -> ring-0.17.14-LICENSE-MIT.txt
+        -> ring-0.17.14-LICENSE-other-bits.txt
+        -> ring-0.17.14-LICENSE.2.txt
+        -> ring-0.17.14-LICENSE.txt
+        -> shared-Apache-2.0-a60eea81.txt
+    rustc-hash 2.1.3  [Apache-2.0 OR MIT]
+        -> rustc-hash-2.1.3-LICENSE-APACHE.txt
+        -> rustc-hash-2.1.3-LICENSE-MIT.txt
+    rusticata-macros 4.1.0  [MIT/Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-a5c61b93.txt
+    rustls 0.23.46  [Apache-2.0 OR ISC OR MIT]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-ISC-0BSD-7cfafc87.txt
+        -> shared-MIT-709e3175.txt
+    rustls-pemfile 2.2.0  [Apache-2.0 OR ISC OR MIT]
+        -> rustls-pemfile-2.2.0-LICENSE.txt
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-ISC-0BSD-7cfafc87.txt
+        -> shared-MIT-709e3175.txt
+    rustls-pki-types 1.15.1  [MIT OR Apache-2.0]
+        -> rustls-pki-types-1.15.1-LICENSE-APACHE.txt
+        -> rustls-pki-types-1.15.1-LICENSE-MIT.txt
+    rustls-platform-verifier 0.7.1  [MIT OR Apache-2.0]
+        -> rustls-platform-verifier-0.7.1-LICENSE-MIT.txt
+        -> shared-Apache-2.0-c71d239d.txt
+    rustls-platform-verifier-android 0.2.0  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-c71d239d.txt
+    rustls-webpki 0.103.16  [ISC]
+        -> rustls-webpki-0.103.16-LICENSE.txt
+    seahash 4.1.0  [MIT]
+        -> shared-MIT-23f18e03.txt
+    selectors 0.32.0  [MPL-2.0]
+        -> selectors-0.32.0-LICENSE-LOCATION.txt
+    serde 1.0.229  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-62c7a1e3.txt
+        -> shared-MIT-23f18e03.txt
+    serde_core 1.0.229  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-62c7a1e3.txt
+        -> shared-MIT-23f18e03.txt
+    serde_json 1.0.154  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-62c7a1e3.txt
+        -> shared-MIT-23f18e03.txt
+    servo_arc 0.4.3  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-23f18e03.txt
+    sha2 0.10.9  [MIT OR Apache-2.0]
+        -> sha2-0.10.9-LICENSE-MIT.txt
+        -> shared-Apache-2.0-a9040321.txt
+    simd-adler32 0.3.10  [MIT]
+        -> simd-adler32-0.3.10-LICENSE.md.txt
+    slab 0.4.12  [MIT]
+        -> slab-0.4.12-LICENSE.txt
+    smallvec 1.16.5  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> smallvec-1.16.5-LICENSE-MIT.txt
+    smoltcp 0.14.0  [0BSD]
+        -> smoltcp-0.14.0-LICENSE-0BSD.txt
+    socket2 0.6.5  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-378f5840.txt
+    stable_deref_trait 1.2.1  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> stable_deref_trait-1.2.1-LICENSE-MIT.txt
+    subtle 2.6.1  [BSD-3-Clause]
+        -> subtle-2.6.1-LICENSE.txt
+    thiserror 1.0.69  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-62c7a1e3.txt
+        -> shared-MIT-23f18e03.txt
+    time 0.3.55  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-0d542e0c.txt
+        -> time-0.3.55-LICENSE-MIT.txt
+    tinystr 0.8.5  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    tokio 1.54.1  [MIT]
+        -> shared-MIT-253cd04c.txt
+    tokio-rustls 0.26.6  [MIT OR Apache-2.0]
+        -> tokio-rustls-0.26.6-LICENSE-APACHE.txt
+        -> tokio-rustls-0.26.6-LICENSE-MIT.txt
+    tokio-util 0.7.20  [MIT]
+        -> shared-MIT-253cd04c.txt
+    tracing 0.1.44  [MIT]
+        -> shared-MIT-898b1ae9.txt
+    tracing-core 0.1.36  [MIT]
+        -> shared-MIT-898b1ae9.txt
+        -> tracing-core-0.1.36-LICENSE.txt
+    try-lock 0.2.5  [MIT]
+        -> try-lock-0.2.5-LICENSE.txt
+    typenum 1.20.1  [MIT OR Apache-2.0]
+        -> typenum-1.20.1-LICENSE-APACHE.txt
+        -> typenum-1.20.1-LICENSE-MIT.txt
+        -> typenum-1.20.1-LICENSE.txt
+    untrusted 0.9.0  [ISC]
+        -> untrusted-0.9.0-LICENSE.txt
+    utf8_iter 1.1.0  [Apache-2.0 OR MIT]
+        -> shared-Apache-2.0-cfc7749b.txt
+        -> shared-MIT-3fa4ca83.txt
+    utf_types 1.0.0  [Apache-2.0 OR MIT]
+        -> shared-Apache-2.0-cfc7749b.txt
+        -> shared-MIT-3fa4ca83.txt
+    want 0.3.2  [MIT]
+        -> want-0.3.2-LICENSE.txt
+    writeable 0.6.4  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    x509-parser 0.18.1  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> shared-MIT-a5c61b93.txt
+    yasna 0.6.0  [MIT OR Apache-2.0]
+        -> shared-Apache-2.0-a60eea81.txt
+        -> yasna-0.6.0-LICENSE-MIT.txt
+    yoke 0.8.4  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    zerofrom 0.1.8  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    zeroize 1.9.1  [Apache-2.0 OR MIT]
+        -> shared-Apache-2.0-cfc7749b.txt
+        -> zeroize-1.9.1-LICENSE-MIT.txt
+    zerotrie 0.2.5  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    zerovec 0.11.9  [Unicode-3.0]
+        -> shared-Unicode-f367c1b8.txt
+    zmij 1.0.23  [MIT]
+        -> shared-MIT-23f18e03.txt
+
+==============================================================================
+三、Android / Kotlin 依赖（DEX 与资源）
+==============================================================================
+
+清单依据 releaseRuntimeClasspath、各构件的 POM 和上游声明。47 个构件包含 57 个许可文件，正文相同。
+全部为 Apache License 2.0，正文见 Apache-2.0 相关文件。
+
+    androidx.activity:activity:1.13.0
+    androidx.activity:activity-compose:1.13.0
+    androidx.activity:activity-ktx:1.13.0
+    androidx.annotation:annotation-experimental:1.4.1
+    androidx.annotation:annotation-jvm:1.9.1
+    androidx.arch.core:core-common:2.2.0
+    androidx.arch.core:core-runtime:2.2.0
+    androidx.autofill:autofill:1.0.0
+    androidx.collection:collection-jvm:1.5.0
+    androidx.collection:collection-ktx:1.5.0
+    androidx.compose.animation:animation-android:1.11.4
+    androidx.compose.animation:animation-core-android:1.11.4
+    androidx.compose.foundation:foundation-android:1.11.4
+    androidx.compose.foundation:foundation-layout-android:1.11.4
+    androidx.compose.material:material-icons-core-android:1.7.8
+    androidx.compose.material:material-ripple-android:1.11.4
+    androidx.compose.material3:material3-android:1.4.0
+    androidx.compose.runtime:runtime-android:1.11.4
+    androidx.compose.runtime:runtime-annotation-android:1.11.4
+    androidx.compose.runtime:runtime-retain-android:1.11.4
+    androidx.compose.runtime:runtime-saveable-android:1.11.4
+    androidx.compose.ui:ui-android:1.11.4
+    androidx.compose.ui:ui-geometry-android:1.11.4
+    androidx.compose.ui:ui-graphics-android:1.11.4
+    androidx.compose.ui:ui-text-android:1.11.4
+    androidx.compose.ui:ui-unit-android:1.11.4
+    androidx.compose.ui:ui-util-android:1.11.4
+    androidx.concurrent:concurrent-futures:1.1.0
+    androidx.core:core:1.18.0
+    androidx.core:core-ktx:1.18.0
+    androidx.core:core-viewtree:1.0.0
+    androidx.customview:customview-poolingcontainer:1.0.0
+    androidx.documentfile:documentfile:1.0.0
+    androidx.dynamicanimation:dynamicanimation:1.0.0
+    androidx.emoji2:emoji2:1.4.0
+    androidx.graphics:graphics-path:1.0.1
+    androidx.interpolator:interpolator:1.0.0
+    androidx.legacy:legacy-support-core-utils:1.0.0
+    androidx.lifecycle:lifecycle-common-java8:2.10.0
+    androidx.lifecycle:lifecycle-common-jvm:2.10.0
+    androidx.lifecycle:lifecycle-livedata:2.10.0
+    androidx.lifecycle:lifecycle-livedata-core:2.10.0
+    androidx.lifecycle:lifecycle-livedata-core-ktx:2.10.0
+    androidx.lifecycle:lifecycle-process:2.10.0
+    androidx.lifecycle:lifecycle-runtime-android:2.10.0
+    androidx.lifecycle:lifecycle-runtime-compose-android:2.10.0
+    androidx.lifecycle:lifecycle-runtime-ktx-android:2.10.0
+    androidx.lifecycle:lifecycle-viewmodel:2.10.0
+    androidx.lifecycle:lifecycle-viewmodel-android:2.10.0
+    androidx.lifecycle:lifecycle-viewmodel-ktx:2.10.0
+    androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.10.0
+    androidx.loader:loader:1.0.0
+    androidx.localbroadcastmanager:localbroadcastmanager:1.0.0
+    androidx.navigationevent:navigationevent-android:1.0.0
+    androidx.navigationevent:navigationevent-compose-android:1.0.0
+    androidx.print:print:1.0.0
+    androidx.profileinstaller:profileinstaller:1.4.0
+    androidx.savedstate:savedstate-android:1.4.0
+    androidx.savedstate:savedstate-compose-android:1.4.0
+    androidx.savedstate:savedstate-ktx:1.4.0
+    androidx.startup:startup-runtime:1.1.1
+    androidx.tracing:tracing:1.2.0
+    androidx.transition:transition:1.6.0
+    androidx.versionedparcelable:versionedparcelable:1.1.1
+    androidx.window:window:1.5.0
+    androidx.window:window-core-android:1.5.0
+    com.google.guava:listenablefuture:1.0
+    org.jetbrains:annotations:23.0.0
+    org.jetbrains.kotlin:kotlin-stdlib:2.2.20
+    org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0
+    org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0
+    org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3
+    org.jspecify:jspecify:1.0.0
+    org.rustls:rustls-platform-verifier:0.2.0
+
+例外：
+  * com.google.guava:listenablefuture:1.0 — POM 未声明 licenses 段，其 parent 为
+    com.google.guava:guava-parent，按 Apache-2.0 处理。
+  * org.rustls:rustls-platform-verifier:0.2.0 — 按上游 LICENSE-APACHE / LICENSE-MIT
+    以 Apache-2.0 OR MIT 授权，本项目选择 Apache-2.0。
+
+==============================================================================
+四、需要单独说明的项
+==============================================================================
+
+A. ring 0.17.14：根 LICENSE 只是索引，指向随包附带的其它文件。本目录收录了
+   它的全部条款文件：LICENSE-BoringSSL（Apache 正文之后还有 Go 与 Chromium 的
+   版权与许可声明）、LICENSE-other-bits（ISC，Brian Smith，2015-2025）、
+   third_party/fiat/LICENSE（fiat-crypto 作者的 Apache-2.0）、以及内嵌的
+   src/polyfill/once_cell 两份。ring 同时以 Apache-2.0 与 ISC 授权，两者都适用。
+
+B. 全部运行时 crate 均已映射到许可文件，含下列上游补充件。
+
+   其中以下 crate 的发布包**没有**条款文件，本目录收的是按上游 commit 取得的补充件
+   （取得地址与 commit 见源码仓库 scripts/licenses-extra/README.md）：
+     - flatbuffers 25.12.19
+     - jni 0.22.4
+     - rustls-platform-verifier-android 0.2.0
+     - seahash 4.1.0
+     - selectors 0.32.0
+
+C. Mozilla 公共后缀列表（Public Suffix List）：经 psl crate 编译进 libzshield.so，
+   共 10406 条规则，以 MPL-2.0 发布。https://publicsuffix.org/
+
+D. 图标：应用图标使用 Google Material Icons 的 verified_user 路径数据，
+   Apache License 2.0。https://github.com/google/material-design-icons
+
+E. Apache-2.0 §4(d)（传递上游 NOTICE）：Rust 与 Android 运行时构件逐个解包，
+   NOTICE 文件 0 个，因此没有需要额外传递的 NOTICE 内容。
+
+==============================================================================
+五、订阅过滤列表（不随包分发）
+==============================================================================
+
+应用内可选下载的过滤列表由各自发布方授权（AdGuard 过滤器 GPL-3.0、
+uBlock filters GPL-3.0、EasyList GPLv3+CC BY-SA、URLhaus CC-BY-SA-4.0 等）。
+它们由用户按需下载，不包含在本 APK 中。逐条授权见应用内列表目录。
+
+==============================================================================
+六、获取对应源代码
+==============================================================================
+
+本 APK 的完整对应源代码（含构建脚本、Cargo.lock 与版本锁定信息）随每个版本
+在项目公开仓库按 tag 提供；APK 的 versionName/versionCode 对应同名 tag。
+
+第三方 crate 的对应源码：按上表的名称与版本从 crates.io 取得同一发布包，
+或在本仓库执行 `cargo vendor` 取得锁定版本的完整副本。这些 crate 未被本项目修改。

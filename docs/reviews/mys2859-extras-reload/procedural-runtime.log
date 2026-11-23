@@ -1,0 +1,23 @@
+ok   :style() applies the declaration to the matched element only
+ok   no action means display:none
+ok   :remove() deletes the element
+ok   :remove-attr() strips only the named attribute
+ok   :remove-class() strips only the named class
+ok   :has-text() matches on text content
+ok   :has-text() accepts a regular expression
+ok   :min-text-length() keeps the short ones out
+ok   :upward(1) removes the parent
+ok   :upward(2) removes the grandparent
+ok   :upward(selector) removes the ancestor that matches
+ok   :upward() past the root is a no-op
+ok   :matches-attr(name) matches on the attribute name
+ok   :matches-attr(name=value) matches on the value
+ok   :matches-path() limits the rule to a path
+ok   a CSS continuation filters the node itself
+ok   a CSS continuation with a leading combinator walks down
+ok   an unknown operator stops the rule instead of misapplying it
+ok   a selector the browser rejects does not stop the next rule
+ok   a rule argument cannot inject markup
+ok   the rules do not leak a global that a page script could collide with
+
+21/21 passed

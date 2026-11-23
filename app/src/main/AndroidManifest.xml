@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Building the tunnel and reaching the configured DoH upstream. No other network use. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!--
+      Required for `JobInfo.setPersisted(true)`: without it the platform refuses to schedule a
+      persisted job (and throws), so the periodic filter update could not survive a reboot.
+      A normal, install-time permission — no runtime prompt.
+    -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!--
+      M4a: the self-check page asks the system to exempt this app from battery optimisations with
+      `ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`, which is only honoured for an app that declares
+      `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`. Play restricts that permission to apps whose core
+      function needs the exemption; ZShield is not distributed through Play (`docs/DESIGN.md` §3), and
+      a VPN that Doze suspends is a VPN that is not protecting anything. The dialog the user sees is
+      the documented system one — this app can neither grant nor bypass it, and v1 does not: the
+      request is only ever made from the self-check item the user taps. See `docs/KEEPALIVE.md`.
+    -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!--
+      M3a: HTTPS filtering decides per *application*, and the only supported way to attribute a live
+      connection to an app is `ConnectivityManager.getConnectionOwnerUid`, which answers in uids. The
+      package names the decision is configured with (the built-in browser list plus the user's own
+      selections) therefore have to be converted to uids, and `PackageManager.getPackageUid` reports
+      "not installed" for any package this app cannot see.
+
+      `QUERY_ALL_PACKAGES` is the only way to cover an arbitrary, user-editable package list: a
+      `<queries>` block can only enumerate names known at build time, and the user may add any
+      browser. The permission is Play-restricted, and this app is not distributed through Play
+      (`docs/DESIGN.md` §3: no Play Services, local builds and GitHub Releases), so the restriction
+      does not apply. No package information is collected or transmitted anywhere: it is used to
+      build a uid set in memory and nothing else (§11 privacy).
+    -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <!--
+      Package visibility for the "excluded apps" page: launchable apps only, no QUERY_ALL_PACKAGES.
+    -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".ZShieldApp"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ZShield"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+          Diagnostics screen (raw counters, test actions). Reached from Settings → 诊断工具, and kept
+          exported so device tests can open it with `am start -n <pkg>/top.zztweb.zshield.debug.DebugActivity`.
+        -->
+        <activity
+            android:name=".debug.DebugActivity"
+            android:exported="true"
+            android:label="@string/debug_title" />
+
+        <!--
+          Foreground service type: `systemExempted`.
+          Basis (Android docs, "Foreground service types" → System exempted): the type is allowed
+          for "VPN apps (configured using Settings > Network & Internet > VPN)". ZShield is exactly
+          that: its service runs a VpnService tunnel the user enabled, and the notification must
+          stay for as long as the tunnel is up. `specialUse` would also be startable, but it needs a
+          free-form justification reviewed by Play and is meant for cases no other type covers;
+          `systemExempted` is the documented fit here. Verified on the Pixel 5 (A16) that the
+          service starts without ForegroundServiceStartNotAllowedException / type-not-allowed.
+
+          Why `ForegroundServicePermission` is suppressed below (MYS-2716 §4): the lint check
+          (`ForegroundServicePermissionDetector`) requires, for `systemExempted`, the
+          `FOREGROUND_SERVICE_SYSTEM_EXEMPTED` permission **and** one of
+          `SCHEDULE_EXACT_ALARM` / `USE_EXACT_ALARM`. That second half is wrong for this app. The
+          platform documentation lists the permitted use cases — a VPN app configured through system
+          settings is one, an app holding `USE_EXACT_ALARM` is a *different* one — and the framework
+          enforces the permission, not the use case. Declaring an exact-alarm permission to satisfy
+          the check would claim an alarm-clock capability this app does not have (and
+          `USE_EXACT_ALARM` is Play-restricted, `docs/DESIGN.md` §3). The permission the framework
+          actually requires is declared above, and the Pixel 5 (A16) log
+          (`ForegroundServiceTypeLoggerModule` + `Vpn : Established`) shows the service entering the
+          foreground with this type and no SecurityException, so the suppression is for the false
+          positive only. `./gradlew lintRelease` is otherwise clean and gates `scripts/build.sh`.
+        -->
+        <service
+            android:name=".vpn.ZShieldVpnService"
+            android:exported="false"
+            android:foregroundServiceType="systemExempted"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            tools:ignore="ForegroundServicePermission">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
+
+        <!--
+          Debug control surface: lets `adb shell am broadcast` drive a rule change while the tunnel
+          runs, so the hot-reload acceptance test does not depend on screen coordinates.
+          It MUST be guarded: an exported receiver without a permission lets any installed app
+          rewrite user rules or allowlist its own ad domains, silently disabling protection.
+          `android.permission.DUMP` is signature|privileged|development, so the adb shell holds it
+          and ordinary third-party apps cannot obtain it.
+        -->
+        <receiver
+            android:name=".filters.DebugCommandReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="top.zztweb.zshield.action.DEBUG_SET_RULES" />
+                <action android:name="top.zztweb.zshield.action.DEBUG_SET_ALLOWLIST" />
+                <action android:name="top.zztweb.zshield.action.DEBUG_COMPILE" />
+                <action android:name="top.zztweb.zshield.action.DEBUG_TOGGLE_VPN" />
+                <action android:name="top.zztweb.zshield.action.DEBUG_HTTPS_UIDS" />
+                <action android:name="top.zztweb.zshield.action.DEBUG_CLEAR_BYPASS" />
+            </intent-filter>
+        </receiver>
+
+        <!--
+          Periodic filter-list updates (docs/DESIGN.md fixed decision 8: platform JobScheduler,
+          no WorkManager). `setPersisted(true)` makes it survive a reboot, so no boot receiver is
+          needed for this part. INTERNET/ACCESS_NETWORK_STATE are already declared above.
+        -->
+        <service
+            android:name=".filters.FilterUpdateJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!--
+          M4a periodic protection self-check (docs/DESIGN.md fixed decision 9). Persisted, so the
+          platform re-registers it after a reboot; it does no network work and no JNI, only the
+          `ProtectionRecovery` decision.
+        -->
+        <service
+            android:name=".vpn.KeepAliveJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!--
+          Boot / upgrade recovery (M4a, docs/DESIGN.md §7 scenarios 4 and 5).
+
+          `LOCKED_BOOT_COMPLETED` is deliberately absent: the settings file lives in credential-
+          encrypted storage, so a receiver running before the user unlocks would read defaults and
+          decide "protection was not wanted". `BOOT_COMPLETED` arrives a few seconds later and reads
+          the real intent; `docs/KEEPALIVE.md` records the trade-off.
+
+          Both filters are `exported="true"` because the senders are the system. Nothing here is
+          guarded by a permission, which is correct: the receiver only ever *starts* filtering that
+          the persisted user intent already asked for, and it cannot be used to turn protection off.
+        -->
+        <receiver
+            android:name=".vpn.BootRestoreReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <!--
+          Quick Settings tile (M4a task card §3). Exported because the system's SystemUI binds it,
+          and guarded by `android.permission.BIND_QUICK_SETTINGS_TILE`, which only SystemUI holds.
+          `TOGGLEABLE_TILE` (API 30+) tells the platform the tile has no secondary state, which is
+          what lets the system render the "on/off" affordance correctly.
+        -->
+        <service
+            android:name=".tile.ZShieldTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile_shield"
+            android:label="@string/tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+        <!--
+          M4a test seam for docs/DESIGN.md §7 scenario 3 (process death → automatic recovery). The
+          adb shell cannot kill a process that holds a foreground service (`am kill` skips it, and
+          `kill -9` is refused for a different uid), and enabling root debugging restarts adbd, which
+          would drop the Wi-Fi adb link AGENTS.md protects. The app therefore SIGKILLs itself on
+          request, which takes the same ActivityManager path as a low-memory kill.
+
+          Guarded by `android.permission.DUMP` for the same reason as DebugCommandReceiver: the adb
+          shell holds it, no third-party app can. It cannot turn protection off — the persisted user
+          intent is untouched, which is exactly what the scenario verifies.
+        -->
+        <receiver
+            android:name=".vpn.RecoveryTestReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="top.zztweb.zshield.action.DEBUG_SUICIDE" />
+                <action android:name="top.zztweb.zshield.action.DEBUG_KEEPALIVE_CHECK" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

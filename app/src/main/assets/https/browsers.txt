@@ -1,0 +1,59 @@
+! 由 ZShield 解密的浏览器（HTTPS 过滤，M3a）。
+!
+! 收录标准：**使用系统证书库做 TLS 校验**，因此在用户安装根证书后真的会接受它。
+! 自带证书库或强制使用固定根的应用（部分国产浏览器、内嵌 WebView 的 App）不在此列：
+! 解密它们只会让握手失败，随后由自动放行表兜住。
+!
+! 一行一个包名；`#` 之后为注释；未安装的包名在启动时自动跳过。
+! 内置订阅与浏览器名单是两回事：这个文件只回答「哪些应用可以解密」。
+
+# --- 国际与主流浏览器 ---
+com.android.chrome
+com.chrome.beta
+com.chrome.dev
+com.chrome.canary
+org.mozilla.firefox
+org.mozilla.firefox_beta
+org.mozilla.fenix
+org.mozilla.focus
+com.microsoft.emmx
+com.brave.browser
+com.opera.browser
+com.opera.mini.native
+com.opera.gx
+com.sec.android.app.sbrowser
+com.vivaldi.browser
+com.duckduckgo.mobile.android
+org.chromium.chrome
+com.kiwibrowser.browser
+org.cromite.cromite
+org.bromite.bromite
+org.lineageos.jelly
+com.ecosia.android
+com.qwant.liberty
+
+# --- 国内常用浏览器 ---
+com.tencent.mtt
+com.UCMobile
+com.ucmobile
+com.UCMobile.intl
+com.quark.browser
+com.quark.browser.cn
+com.baidu.searchbox
+com.baidu.browser.inter
+com.android.browser
+com.mi.globalbrowser
+com.miui.core.browser
+com.heytap.browser
+com.coloros.browser
+com.vivo.browser
+com.huawei.browser
+com.ohos.browser
+com.sogou.explorer
+com.boatbrowser.free
+com.privatebrowser
+mark.via
+mark.via.gp
+com.lemurbrowser
+com.kiwibrowser.browser
+org.telegram.messenger.web

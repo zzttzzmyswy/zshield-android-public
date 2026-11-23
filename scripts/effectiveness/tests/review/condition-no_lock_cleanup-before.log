@@ -1,0 +1,14 @@
+
+=== cleanup
+HTTPS filtering currently: off (want off)
+
+=== stopping protection
+
+=== clearing the user rules
+  app force-stopped
+
+NOT done automatically (they need on-device UI, see docs/TESTING.md §9.5):
+  - remove the ZShield CA from Settings → Security → Encryption & credentials →
+    Trusted credentials → User tab
+  - clear the lock screen PIN if one was set for the install
+tunnel did NOT reach down within 60s

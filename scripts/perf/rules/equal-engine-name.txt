@@ -1,0 +1,16 @@
+! Same rule text fed to both builds; both must produce the same rewrite for every case whose
+! `group` is `equal` in scripts/perf/matrix.json.
+!
+! Every line is an ordinary `$removeparam=<name>` form, which the pinned adblock engine parses and
+! applies itself. That is deliberate: for this shape the v0.1.2 build holds *no* own rule (its
+! collector skips anything `engine_accepts`) and its rewrite comes from the engine's `rewritten_url`,
+! while the candidate evaluates the same rules in its own evaluator. Same rules, same requests, same
+! answer — the work is done by a different component, which is exactly the comparison that has to be
+! attributed rather than asserted.
+||shop.example.com^$removeparam=utm_source
+||news.example.com^$removeparam=pjclid
+||www.zhihu.com^$removeparam=utm_psn
+||api.example.com^$xmlhttprequest,removeparam=track
+||cdn.example.com^$image,removeparam=w
+||euronews.com^$removeparam=webPushId
+||shop.example.com^$removeparam=ref

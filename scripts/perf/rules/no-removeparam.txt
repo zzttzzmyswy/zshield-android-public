@@ -1,0 +1,10 @@
+! Control for "what does the edited path cost when there is no $removeparam work at all".
+!
+! Neither build's collector holds a rule from this file (it carries no $removeparam option), so both
+! take the same shape: one engine query, one $removeheader pass, and — for the candidate — a
+! `$removeparam` entry point that finds an empty rule set and returns. Whatever difference remains
+! here is fixed per-request overhead in `edits`, not rule-evaluation work, and that is what makes it
+! separable from the work each build does on a real rule set.
+||ads.example.com^
+||tracker.example^$third-party
+@@||good.example^

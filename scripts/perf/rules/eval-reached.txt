@@ -1,0 +1,38 @@
+! Equal work, honestly: the gate **opens on both builds** for every document case in the matrix, so
+! `RemoveParamRules::rewrite` passes `extras.rs:1132` and `in_force` really runs.
+!
+! This set exists because the stage-5 review showed the previous "40 shared by-value rules" row was
+! vacuous: those rules were anchored at real third-party hosts, the request was `www.example.com`, so
+! `gate_should_block` was false and `rewrite` returned before evaluating anything. That row priced a
+! *missed gate*, not rule evaluation, and could not support any claim about evaluation cost.
+!
+! Every rule here:
+!   * is a `$removeparam=/regex/` form -- the pinned engine refuses it, so **both** builds evaluate it
+!     themselves (v0.1.2 collects it too; verified: `removeparam_rules` is the same on both sides);
+!   * is anchored `||host^` so its stripped form is `||host^$document`, which matches a document
+!     request to that host -- so the gate over these forms opens;
+!   * matches no parameter the matrix requests carry, so **neither** build rewrites anything: the
+!     comparison is the cost of deciding, with no URL rebuilding on either side.
+!
+! Verified per case with `core/examples/removeparam_path`: `gate_should_block=true` and
+! `enters_in_force=true` for both builds on every case whose host appears here.
+||www.example.com^$removeparam=/^zzz1/
+||www.example.com^$removeparam=/^zzz2/
+||www.example.com^$removeparam=/^zzz3/
+||www.example.com^$removeparam=/^zzz4/
+||www.example.com^$removeparam=/^zzz5/
+||www.example.com^$removeparam=/^zzz6/
+||www.example.com^$removeparam=/^zzz7/
+||www.example.com^$removeparam=/^zzz8/
+||shop.example.com^$removeparam=/^zzz1/
+||shop.example.com^$removeparam=/^zzz2/
+||shop.example.com^$removeparam=/^zzz3/
+||shop.example.com^$removeparam=/^zzz4/
+||euronews.com^$removeparam=/^zzz1/
+||euronews.com^$removeparam=/^zzz2/
+||euronews.com^$removeparam=/^zzz3/
+||euronews.com^$removeparam=/^zzz4/
+||www.zhihu.com^$removeparam=/^zzz1/
+||www.zhihu.com^$removeparam=/^zzz2/
+||www.zhihu.com^$removeparam=/^zzz3/
+||www.zhihu.com^$removeparam=/^zzz4/

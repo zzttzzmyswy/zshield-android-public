@@ -1,0 +1,122 @@
+[package]
+name = "zshield-core"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+description = "ZShield data plane: minimal TUN read/write, DNS filtering, DoH/UDP upstream, TTL cache"
+license = "GPL-3.0-or-later"
+publish = false
+
+[lib]
+name = "zshield"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+jni = "0.22.4"
+bytes = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = [
+    "rt-multi-thread",
+    "net",
+    "time",
+    "sync",
+    "io-util",
+    "macros",
+] }
+hyper = { version = "1", features = ["client", "http2"] }
+hyper-util = { version = "0.1", features = ["tokio"] }
+http-body-util = "0.1"
+tokio-rustls = { version = "0.26", default-features = false, features = ["ring", "tls12", "logging"] }
+rustls = { version = "0.23", default-features = false, features = [
+    "ring",
+    "std",
+    "tls12",
+    "logging",
+] }
+rustls-platform-verifier = "0.7"
+lru = "0.19"
+# M3a: the local root CA and the per-SNI leaf certificates. `ring` is the crypto backend the rest of
+# the crate already builds with (rustls/ring), so no second backend is linked in.
+rcgen = { version = "0.14", default-features = false, features = [
+    "crypto",
+    "ring",
+    "pem",
+    # `Issuer::from_ca_cert_der`: the issuer name, key usage and key identifier method all have to
+    # come back out of the certificate the user installed, and rcgen can read exactly what it needs
+    # to sign matching leaves. Reimplementing that mapping here would be a second, divergent copy.
+    "x509-parser",
+] }
+# The CA's own `notAfter` and the published fingerprint, read out of the DER the control plane
+# stored. rcgen's `Issuer` deliberately does not expose them.
+x509-parser = "0.18"
+# Calendar dates for certificate validity (rcgen's own date type).
+time = "0.3"
+# `PrivatePkcs8KeyDer` for handing key material to rustls/rcgen.
+rustls-pki-types = "1"
+# The `http` types `h2` speaks (`Request`, `Response`, `HeaderMap`). Already in the tree through
+# `hyper`; naming it directly is what lets the h2 relay build requests without going through hyper.
+http = "1"
+# HTTP/2 for the decrypted leg. `hyper` above is the H1 side of the M2b pipeline; `h2` is used
+# directly for the MITM connection because the per-stream decision needs raw streams, not a
+# request/response client, and because the framing has to be forwarded stream by stream.
+h2 = "0.4"
+# PEM for the exported CA certificate and the leaf chain handed to rustls.
+rustls-pemfile = "2"
+# SHA-256 of the CA DER for the fingerprint the UI shows and the export file name.
+sha2 = "0.10"
+# Base64 for `keyPkcs8B64` in the `generateCa` contract.
+base64 = "0.22"
+# The OS CSPRNG, for the CA name suffix and the certificate serial numbers. The same `ring` the TLS
+# stack already links, so no second entropy backend is pulled in.
+ring = "0.17"
+# The userspace TCP/IP stack under the TUN device (M2a). smoltcp is the de-facto standard Rust
+# stack: `medium-ip` is exactly the TUN framing (bare IP, no Ethernet), `any_ip` is what makes
+# transparent forwarding possible (we accept traffic for addresses we do not own). The wrapper
+# crates (ipstack, netstack-smoltcp) were evaluated and rejected — see docs/DESIGN.md / the M2a
+# delivery note for the reasons.
+smoltcp = { version = "0.14", default-features = false, features = [
+    "std",
+    "alloc",
+    "medium-ip",
+    "proto-ipv4",
+    "proto-ipv6",
+    "socket-tcp",
+    "socket-udp",
+] }
+# Brave's adblock engine: the network/cosmetic rule engine (MPL-2.0, docs/DESIGN.md decision 6).
+# `embedded-domain-resolver` pulls the public suffix list, needed to tell first- from third-party
+# without a network call. `single-thread` is deliberately *not* enabled: it would make `Engine`
+# `!Send`/`!Sync` (its regex manager would be a `RefCell`), and since M2b the engine is shared by
+# every per-connection forwarding task, not owned by one thread. Without it the engine costs one
+# uncontended `Mutex` around the regex manager — measured at 8 us p50 per request either way.
+adblock = { version = "0.13", default-features = false, features = [
+    "embedded-domain-resolver",
+    "full-regex-handling",
+    # `css-validation` parses every cosmetic selector with `cssparser`/`selectors` — the same grammar
+    # a browser uses — and splits procedural operators (`:has-text()`, `:upward()`, `:xpath()`, ...)
+    # out of the plain-CSS list. Without it the engine hands back one opaque string per rule, so a
+    # single selector the browser cannot parse is indistinguishable from a valid one and poisons every
+    # other selector in the same rule list (M5a §9.3.3: 15 of 43 leaked through and disabled the rest).
+    # It also *validates* what stays plain CSS, which is what `cosmetic::validate` relies on.
+    "css-validation",
+] }
+
+# M3b: streaming gzip decoding for HTML documents with cosmetic injection. Documents are requested
+# with `Accept-Encoding: gzip` only (see docs/EFFECTIVENESS.md), decoded on the fly, injected, and sent
+# to the client as identity, so no compression code is needed — only decompression, which is what the
+# `rust_backend` (miniz_oxide, MIT) provides without adding a C dependency to the NDK build.
+flate2 = { version = "1", default-features = false, features = ["rust_backend"] }
+
+# M5b: `$removeparam=/regex/` is written as a regular expression by the list author and has to be
+# evaluated as one. `regex` is already in the tree through `adblock`'s `full-regex-handling` feature, so
+# naming it directly costs no second engine — and its linear-time guarantee is the reason a
+# subscription-supplied pattern cannot make the tunnel backtrack.
+regex = "1"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

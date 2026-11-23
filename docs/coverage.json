@@ -1,0 +1,1623 @@
+{
+  "listsFetchedAt": "2026-11-09T20:53:25Z",
+  "engine": "adblock 0.1.0",
+  "listCount": 27,
+  "totals": {
+    "adguardModifier": 785,
+    "dns": 1285936,
+    "elemhide": 173996,
+    "extras": 6484,
+    "network": 493678,
+    "parseFailure": 1052,
+    "procedural": 0,
+    "proceduralApplied": 18978,
+    "scriptlet": 14579
+  },
+  "elemhideSpecific": 135382,
+  "elemhideGeneric": 33079,
+  "elemhideException": 5535,
+  "scriptletShipped": 14347,
+  "scriptletMissing": 232,
+  "wildcardHostRules": 293686,
+  "effectiveRules": 1993419,
+  "ineffectiveRules": 2069,
+  "unimplementedModifiers": [
+    {
+      "option": "cname",
+      "probe": "@@||player.fm^$cname",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "dnstype",
+      "probe": "||*serror*.wo.com.cn^$dnstype=A|CNAME",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "elemhide",
+      "probe": "@@||dozenofelites.com^$elemhide",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "genericblock",
+      "probe": "@@||adguardpartner.com^$generichide,genericblock",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "header",
+      "probe": "://www.*.com/*.css|$script,3p,header=popads-node",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "inline-script",
+      "probe": "*$1p,inline-script,script,domain=click.allkeyshop.com",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "ipaddress",
+      "probe": "$doc,ipaddress=185.100.85.248",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "permissions",
+      "probe": "$domain=nzherald.co.nz,permissions=geolocation=()",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "popunder",
+      "probe": "*$popunder,domain=realgfporn.com",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "reason",
+      "probe": "||adjust.com^$doc,reason=tracker",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "replace",
+      "probe": "||www.youtube.com/playlist?list=$xhr,1p,replace=/\"adPlacements\"/\"no_ads\"/",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "shide",
+      "probe": "@@||magyarhang.org^$shide",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "strict1p",
+      "probe": "@@||www.realclear*/esm/assets/js/analytics/gaAnalytics.js?v=$xhr,1p,strict1p,method=get,domain=com|org",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "strict3p",
+      "probe": "||fingerprint.com^$strict3p,domain=fingerprint.com|~dev.fingerprint.com|~docs.fingerprint.com|~dashboard.fingerprint.com",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "uritransform",
+      "probe": "||amazon.com/s/ref=$doc,uritransform=/\\/ref=[^\\/?#]+//",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    },
+    {
+      "option": "urlskip",
+      "probe": "||click.redditmail.com/CL0/$urlskip=/\\/CL0\\/(http.*?)\\/\\d\\/[a-f0-9-]+\\// -uricomponent",
+      "accepted": false,
+      "error": "network filter error: unrecognised option"
+    }
+  ],
+  "lists": [
+    {
+      "id": "adguard-base",
+      "bytes": 6440802,
+      "lines": 147298,
+      "validRules": 131295,
+      "counts": {
+        "adguardModifier": 60,
+        "dns": 54919,
+        "elemhide": 49250,
+        "extras": 3100,
+        "network": 16619,
+        "parseFailure": 564,
+        "procedural": 0,
+        "proceduralApplied": 2420,
+        "scriptlet": 4363
+      },
+      "elemhideSpecific": 33812,
+      "elemhideGeneric": 14006,
+      "elemhideException": 1432,
+      "scriptletShipped": 4329,
+      "scriptletMissing": 34,
+      "wildcardHostRules": 2,
+      "proceduralByOperator": {
+        ":matches-attr": 5,
+        ":matches-css": 35,
+        ":matches-path": 21,
+        ":remove()": 142,
+        ":style()": 1963,
+        ":upward": 253,
+        ":xpath": 1,
+        "cosmetic filter error: invalid css selector": 556,
+        "cosmetic filter error: procedural and action filters cannot be generic": 2,
+        "cosmetic filter error: scriptlet args could not be parsed": 5,
+        "network filter error: unrecognised option": 1
+      }
+    },
+    {
+      "id": "adguard-tracking",
+      "bytes": 15088365,
+      "lines": 441641,
+      "validRules": 437983,
+      "counts": {
+        "adguardModifier": 6,
+        "dns": 116636,
+        "elemhide": 290,
+        "extras": 0,
+        "network": 320573,
+        "parseFailure": 8,
+        "procedural": 0,
+        "proceduralApplied": 31,
+        "scriptlet": 439
+      },
+      "elemhideSpecific": 275,
+      "elemhideGeneric": 15,
+      "elemhideException": 0,
+      "scriptletShipped": 439,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":remove()": 1,
+        ":style()": 15,
+        ":upward": 15,
+        "cosmetic filter error: generic script inject": 2,
+        "cosmetic filter error: invalid css selector": 6
+      }
+    },
+    {
+      "id": "adguard-mobile",
+      "bytes": 530188,
+      "lines": 9164,
+      "validRules": 7990,
+      "counts": {
+        "adguardModifier": 3,
+        "dns": 937,
+        "elemhide": 5828,
+        "extras": 2,
+        "network": 609,
+        "parseFailure": 38,
+        "procedural": 0,
+        "proceduralApplied": 478,
+        "scriptlet": 95
+      },
+      "elemhideSpecific": 5748,
+      "elemhideGeneric": 34,
+      "elemhideException": 46,
+      "scriptletShipped": 95,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":matches-attr": 2,
+        ":matches-css": 6,
+        ":matches-path": 14,
+        ":remove()": 27,
+        ":style()": 352,
+        ":upward": 77,
+        "cosmetic filter error: invalid css selector": 37,
+        "network filter error: unrecognised option": 1
+      }
+    },
+    {
+      "id": "adguard-url-tracking",
+      "bytes": 183589,
+      "lines": 4057,
+      "validRules": 2738,
+      "counts": {
+        "adguardModifier": 106,
+        "dns": 0,
+        "elemhide": 1,
+        "extras": 100,
+        "network": 2529,
+        "parseFailure": 2,
+        "procedural": 0,
+        "proceduralApplied": 0,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 1,
+      "elemhideGeneric": 0,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        "network filter error: unrecognised option": 2
+      }
+    },
+    {
+      "id": "adguard-chinese",
+      "bytes": 717937,
+      "lines": 21661,
+      "validRules": 20879,
+      "counts": {
+        "adguardModifier": 23,
+        "dns": 5934,
+        "elemhide": 7965,
+        "extras": 82,
+        "network": 6448,
+        "parseFailure": 12,
+        "procedural": 0,
+        "proceduralApplied": 161,
+        "scriptlet": 254
+      },
+      "elemhideSpecific": 6919,
+      "elemhideGeneric": 792,
+      "elemhideException": 254,
+      "scriptletShipped": 254,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":matches-css": 5,
+        ":remove()": 20,
+        ":style()": 128,
+        ":upward": 8,
+        "cosmetic filter error: invalid css selector": 12
+      }
+    },
+    {
+      "id": "adguard-annoyances",
+      "bytes": 4188304,
+      "lines": 68016,
+      "validRules": 59991,
+      "counts": {
+        "adguardModifier": 15,
+        "dns": 291,
+        "elemhide": 41430,
+        "extras": 2,
+        "network": 6408,
+        "parseFailure": 222,
+        "procedural": 0,
+        "proceduralApplied": 8078,
+        "scriptlet": 3545
+      },
+      "elemhideSpecific": 38027,
+      "elemhideGeneric": 1848,
+      "elemhideException": 1555,
+      "scriptletShipped": 3544,
+      "scriptletMissing": 1,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":matches-attr": 4,
+        ":matches-css": 10,
+        ":matches-path": 93,
+        ":remove()": 118,
+        ":style()": 7673,
+        ":upward": 180,
+        "cosmetic filter error: invalid css selector": 219,
+        "cosmetic filter error: procedural filters can only accept a single CSS selector": 1,
+        "cosmetic filter error: scriptlet args could not be parsed": 2
+      }
+    },
+    {
+      "id": "adguard-annoyances-cookie",
+      "bytes": 1488683,
+      "lines": 23811,
+      "validRules": 20711,
+      "counts": {
+        "adguardModifier": 0,
+        "dns": 122,
+        "elemhide": 13226,
+        "extras": 0,
+        "network": 2768,
+        "parseFailure": 15,
+        "procedural": 0,
+        "proceduralApplied": 3284,
+        "scriptlet": 1296
+      },
+      "elemhideSpecific": 10218,
+      "elemhideGeneric": 1697,
+      "elemhideException": 1311,
+      "scriptletShipped": 1296,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":remove()": 35,
+        ":style()": 3222,
+        ":upward": 27,
+        "cosmetic filter error: invalid css selector": 15
+      }
+    },
+    {
+      "id": "adguard-annoyances-mobile",
+      "bytes": 1414728,
+      "lines": 23787,
+      "validRules": 22559,
+      "counts": {
+        "adguardModifier": 11,
+        "dns": 120,
+        "elemhide": 16008,
+        "extras": 1,
+        "network": 2106,
+        "parseFailure": 95,
+        "procedural": 0,
+        "proceduralApplied": 3141,
+        "scriptlet": 1077
+      },
+      "elemhideSpecific": 15679,
+      "elemhideGeneric": 90,
+      "elemhideException": 239,
+      "scriptletShipped": 1076,
+      "scriptletMissing": 1,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":matches-attr": 2,
+        ":matches-css": 9,
+        ":matches-path": 22,
+        ":remove()": 40,
+        ":style()": 3005,
+        ":upward": 63,
+        "cosmetic filter error: invalid css selector": 93,
+        "cosmetic filter error: scriptlet args could not be parsed": 2
+      }
+    },
+    {
+      "id": "adguard-annoyances-other",
+      "bytes": 347894,
+      "lines": 5814,
+      "validRules": 5494,
+      "counts": {
+        "adguardModifier": 1,
+        "dns": 1,
+        "elemhide": 4359,
+        "extras": 0,
+        "network": 177,
+        "parseFailure": 18,
+        "procedural": 0,
+        "proceduralApplied": 695,
+        "scriptlet": 243
+      },
+      "elemhideSpecific": 4339,
+      "elemhideGeneric": 16,
+      "elemhideException": 4,
+      "scriptletShipped": 243,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":matches-path": 12,
+        ":remove()": 17,
+        ":style()": 647,
+        ":upward": 19,
+        "cosmetic filter error: invalid css selector": 18
+      }
+    },
+    {
+      "id": "adguard-annoyances-widgets",
+      "bytes": 150187,
+      "lines": 3028,
+      "validRules": 2734,
+      "counts": {
+        "adguardModifier": 0,
+        "dns": 38,
+        "elemhide": 1757,
+        "extras": 0,
+        "network": 815,
+        "parseFailure": 36,
+        "procedural": 0,
+        "proceduralApplied": 79,
+        "scriptlet": 9
+      },
+      "elemhideSpecific": 1722,
+      "elemhideGeneric": 35,
+      "elemhideException": 0,
+      "scriptletShipped": 9,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":matches-path": 10,
+        ":remove()": 3,
+        ":style()": 42,
+        ":upward": 24,
+        "cosmetic filter error: invalid css selector": 35,
+        "cosmetic filter error: procedural filters can only accept a single CSS selector": 1
+      }
+    },
+    {
+      "id": "adguard-dns",
+      "bytes": 4538780,
+      "lines": 188176,
+      "validRules": 188167,
+      "counts": {
+        "adguardModifier": 7,
+        "dns": 187483,
+        "elemhide": 0,
+        "extras": 0,
+        "network": 677,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 0,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 0,
+      "elemhideGeneric": 0,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {}
+    },
+    {
+      "id": "easylist",
+      "bytes": 2023575,
+      "lines": 76451,
+      "validRules": 76173,
+      "counts": {
+        "adguardModifier": 1,
+        "dns": 42417,
+        "elemhide": 24511,
+        "extras": 2976,
+        "network": 6000,
+        "parseFailure": 6,
+        "procedural": 0,
+        "proceduralApplied": 262,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 10538,
+      "elemhideGeneric": 13635,
+      "elemhideException": 338,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":has-text": 221,
+        ":remove()": 3,
+        ":style()": 37,
+        ":xpath": 1,
+        "cosmetic filter error: invalid css selector": 6
+      }
+    },
+    {
+      "id": "easyprivacy",
+      "bytes": 1515893,
+      "lines": 57371,
+      "validRules": 56597,
+      "counts": {
+        "adguardModifier": 3,
+        "dns": 43435,
+        "elemhide": 2,
+        "extras": 0,
+        "network": 13123,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 4,
+        "scriptlet": 30
+      },
+      "elemhideSpecific": 0,
+      "elemhideGeneric": 2,
+      "elemhideException": 0,
+      "scriptletShipped": 30,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":style()": 4
+      }
+    },
+    {
+      "id": "easylist-china",
+      "bytes": 498007,
+      "lines": 17903,
+      "validRules": 17798,
+      "counts": {
+        "adguardModifier": 12,
+        "dns": 5787,
+        "elemhide": 6264,
+        "extras": 66,
+        "network": 5663,
+        "parseFailure": 2,
+        "procedural": 0,
+        "proceduralApplied": 4,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 5316,
+      "elemhideGeneric": 776,
+      "elemhideException": 172,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":has-text": 4,
+        "cosmetic filter error: invalid css selector": 2
+      }
+    },
+    {
+      "id": "ublock-filters",
+      "bytes": 469921,
+      "lines": 10795,
+      "validRules": 6055,
+      "counts": {
+        "adguardModifier": 67,
+        "dns": 42,
+        "elemhide": 1617,
+        "extras": 93,
+        "network": 1598,
+        "parseFailure": 15,
+        "procedural": 0,
+        "proceduralApplied": 205,
+        "scriptlet": 2418
+      },
+      "elemhideSpecific": 1524,
+      "elemhideGeneric": 45,
+      "elemhideException": 48,
+      "scriptletShipped": 2343,
+      "scriptletMissing": 75,
+      "wildcardHostRules": 15,
+      "proceduralByOperator": {
+        ":has-text": 63,
+        ":matches-attr": 3,
+        ":matches-css": 3,
+        ":matches-css-before": 4,
+        ":matches-path": 4,
+        ":remove()": 9,
+        ":remove-attr()": 1,
+        ":style()": 84,
+        ":upward": 24,
+        ":xpath": 10,
+        "cosmetic filter error: procedural filters can only accept a single CSS selector": 2,
+        "cosmetic filter error: scriptlet args could not be parsed": 11,
+        "network filter error: unrecognised option": 2
+      }
+    },
+    {
+      "id": "ublock-privacy",
+      "bytes": 185665,
+      "lines": 3421,
+      "validRules": 1797,
+      "counts": {
+        "adguardModifier": 272,
+        "dns": 95,
+        "elemhide": 6,
+        "extras": 13,
+        "network": 1092,
+        "parseFailure": 8,
+        "procedural": 0,
+        "proceduralApplied": 10,
+        "scriptlet": 301
+      },
+      "elemhideSpecific": 4,
+      "elemhideGeneric": 2,
+      "elemhideException": 0,
+      "scriptletShipped": 280,
+      "scriptletMissing": 21,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":has-text": 1,
+        ":remove-attr()": 8,
+        ":remove-class()": 1,
+        "cosmetic filter error: unsupported syntax": 2,
+        "network filter error: unrecognised option": 6
+      }
+    },
+    {
+      "id": "ublock-badware",
+      "bytes": 273715,
+      "lines": 7051,
+      "validRules": 4884,
+      "counts": {
+        "adguardModifier": 54,
+        "dns": 61,
+        "elemhide": 105,
+        "extras": 8,
+        "network": 4615,
+        "parseFailure": 3,
+        "procedural": 0,
+        "proceduralApplied": 14,
+        "scriptlet": 24
+      },
+      "elemhideSpecific": 43,
+      "elemhideGeneric": 62,
+      "elemhideException": 0,
+      "scriptletShipped": 23,
+      "scriptletMissing": 1,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":has-text": 9,
+        ":style()": 5,
+        "network filter error: unrecognised option": 3
+      }
+    },
+    {
+      "id": "ublock-unbreak",
+      "bytes": 282165,
+      "lines": 6105,
+      "validRules": 2573,
+      "counts": {
+        "adguardModifier": 95,
+        "dns": 121,
+        "elemhide": 203,
+        "extras": 30,
+        "network": 1726,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 82,
+        "scriptlet": 316
+      },
+      "elemhideSpecific": 76,
+      "elemhideGeneric": 1,
+      "elemhideException": 126,
+      "scriptletShipped": 298,
+      "scriptletMissing": 18,
+      "wildcardHostRules": 1,
+      "proceduralByOperator": {
+        ":has-text": 1,
+        ":matches-path": 1,
+        ":remove()": 4,
+        ":remove-attr()": 6,
+        ":remove-class()": 3,
+        ":style()": 62,
+        ":upward": 5
+      }
+    },
+    {
+      "id": "ublock-quick-fixes",
+      "bytes": 86126,
+      "lines": 667,
+      "validRules": 449,
+      "counts": {
+        "adguardModifier": 31,
+        "dns": 6,
+        "elemhide": 71,
+        "extras": 9,
+        "network": 127,
+        "parseFailure": 7,
+        "procedural": 0,
+        "proceduralApplied": 29,
+        "scriptlet": 169
+      },
+      "elemhideSpecific": 61,
+      "elemhideGeneric": 0,
+      "elemhideException": 10,
+      "scriptletShipped": 88,
+      "scriptletMissing": 81,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":has-text": 7,
+        ":matches-attr": 1,
+        ":matches-css": 1,
+        ":matches-css-before": 1,
+        ":remove()": 3,
+        ":style()": 15,
+        ":upward": 1,
+        "cosmetic filter error: scriptlet args could not be parsed": 1,
+        "cosmetic filter error: unsupported syntax": 2,
+        "network filter error: unrecognised option": 4
+      }
+    },
+    {
+      "id": "peter-lowe",
+      "bytes": 70409,
+      "lines": 3579,
+      "validRules": 3560,
+      "counts": {
+        "adguardModifier": 0,
+        "dns": 3560,
+        "elemhide": 0,
+        "extras": 0,
+        "network": 0,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 0,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 0,
+      "elemhideGeneric": 0,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {}
+    },
+    {
+      "id": "urlhaus",
+      "bytes": 11136989,
+      "lines": 101154,
+      "validRules": 101148,
+      "counts": {
+        "adguardModifier": 0,
+        "dns": 1840,
+        "elemhide": 0,
+        "extras": 0,
+        "network": 99308,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 0,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 0,
+      "elemhideGeneric": 0,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {}
+    },
+    {
+      "id": "hagezi-pro",
+      "bytes": 5098854,
+      "lines": 224301,
+      "validRules": 224287,
+      "counts": {
+        "adguardModifier": 0,
+        "dns": 224287,
+        "elemhide": 0,
+        "extras": 0,
+        "network": 0,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 0,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 0,
+      "elemhideGeneric": 0,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {}
+    },
+    {
+      "id": "hagezi-multi-normal",
+      "bytes": 4829050,
+      "lines": 207210,
+      "validRules": 207196,
+      "counts": {
+        "adguardModifier": 0,
+        "dns": 207196,
+        "elemhide": 0,
+        "extras": 0,
+        "network": 0,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 0,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 0,
+      "elemhideGeneric": 0,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {}
+    },
+    {
+      "id": "oisd-small",
+      "bytes": 1330446,
+      "lines": 61556,
+      "validRules": 61542,
+      "counts": {
+        "adguardModifier": 0,
+        "dns": 61542,
+        "elemhide": 0,
+        "extras": 0,
+        "network": 0,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 0,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 0,
+      "elemhideGeneric": 0,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 61542,
+      "proceduralByOperator": {}
+    },
+    {
+      "id": "oisd-big",
+      "bytes": 5008094,
+      "lines": 232140,
+      "validRules": 232126,
+      "counts": {
+        "adguardModifier": 0,
+        "dns": 232126,
+        "elemhide": 0,
+        "extras": 0,
+        "network": 0,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 0,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 0,
+      "elemhideGeneric": 0,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 232126,
+      "proceduralByOperator": {}
+    },
+    {
+      "id": "anti-ad",
+      "bytes": 2120414,
+      "lines": 96926,
+      "validRules": 96920,
+      "counts": {
+        "adguardModifier": 18,
+        "dns": 96823,
+        "elemhide": 0,
+        "extras": 2,
+        "network": 77,
+        "parseFailure": 0,
+        "procedural": 0,
+        "proceduralApplied": 0,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 0,
+      "elemhideGeneric": 0,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {}
+    },
+    {
+      "id": "cjx-annoyance",
+      "bytes": 57229,
+      "lines": 1863,
+      "validRules": 1842,
+      "counts": {
+        "adguardModifier": 0,
+        "dns": 117,
+        "elemhide": 1103,
+        "extras": 0,
+        "network": 620,
+        "parseFailure": 1,
+        "procedural": 0,
+        "proceduralApplied": 1,
+        "scriptlet": 0
+      },
+      "elemhideSpecific": 1080,
+      "elemhideGeneric": 23,
+      "elemhideException": 0,
+      "scriptletShipped": 0,
+      "scriptletMissing": 0,
+      "wildcardHostRules": 0,
+      "proceduralByOperator": {
+        ":has-text": 1,
+        "cosmetic filter error: invalid css selector": 1
+      }
+    }
+  ],
+  "topIneffectiveShapes": [
+    {
+      "shape": "##…:style()",
+      "count": 17254,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "adguard-annoyances": 7673,
+        "adguard-annoyances-cookie": 3222,
+        "adguard-annoyances-mobile": 3005,
+        "adguard-annoyances-other": 647,
+        "adguard-annoyances-widgets": 42,
+        "adguard-base": 1963,
+        "adguard-chinese": 128,
+        "adguard-mobile": 352,
+        "adguard-tracking": 15,
+        "easylist": 37,
+        "easyprivacy": 4,
+        "ublock-badware": 5,
+        "ublock-filters": 84,
+        "ublock-quick-fixes": 15,
+        "ublock-unbreak": 62
+      },
+      "example": "portable4pc.com##body[class][dir=\"ltr\"] > *:style(filter: none !important;)"
+    },
+    {
+      "shape": "…$popup",
+      "count": 6252,
+      "bucket": "extras",
+      "lists": {
+        "adguard-annoyances": 2,
+        "adguard-annoyances-mobile": 1,
+        "adguard-base": 3077,
+        "adguard-chinese": 68,
+        "adguard-mobile": 2,
+        "easylist": 2976,
+        "easylist-china": 66,
+        "ublock-badware": 8,
+        "ublock-filters": 17,
+        "ublock-privacy": 2,
+        "ublock-quick-fixes": 5,
+        "ublock-unbreak": 28
+      },
+      "example": "||profitableratecpmnetwork.com^$popup"
+    },
+    {
+      "shape": "cosmetic filter error: invalid css selector",
+      "count": 1000,
+      "bucket": "parseFailure",
+      "lists": {
+        "adguard-annoyances": 219,
+        "adguard-annoyances-cookie": 15,
+        "adguard-annoyances-mobile": 93,
+        "adguard-annoyances-other": 18,
+        "adguard-annoyances-widgets": 35,
+        "adguard-base": 556,
+        "adguard-chinese": 12,
+        "adguard-mobile": 37,
+        "adguard-tracking": 6,
+        "cjx-annoyance": 1,
+        "easylist": 6,
+        "easylist-china": 2
+      },
+      "example": "ladypopularblog.com##a[class][href^=\"https://ladypopularblog.com/\"]:contains(Refresh)"
+    },
+    {
+      "shape": "##…:upward",
+      "count": 696,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "adguard-annoyances": 180,
+        "adguard-annoyances-cookie": 27,
+        "adguard-annoyances-mobile": 63,
+        "adguard-annoyances-other": 19,
+        "adguard-annoyances-widgets": 24,
+        "adguard-base": 253,
+        "adguard-chinese": 8,
+        "adguard-mobile": 77,
+        "adguard-tracking": 15,
+        "ublock-filters": 24,
+        "ublock-quick-fixes": 1,
+        "ublock-unbreak": 5
+      },
+      "example": "m.kooora.com##.mainArticle > div.cx-content-part > strong > a[target=\"_blank\"]:upward(3)"
+    },
+    {
+      "shape": "##…:remove()",
+      "count": 422,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "adguard-annoyances": 118,
+        "adguard-annoyances-cookie": 35,
+        "adguard-annoyances-mobile": 40,
+        "adguard-annoyances-other": 17,
+        "adguard-annoyances-widgets": 3,
+        "adguard-base": 142,
+        "adguard-chinese": 20,
+        "adguard-mobile": 27,
+        "adguard-tracking": 1,
+        "easylist": 3,
+        "ublock-filters": 9,
+        "ublock-quick-fixes": 3,
+        "ublock-unbreak": 4
+      },
+      "example": "codec.kyiv.ua##style[id=\"mdpDeblocker-css\"]:remove()"
+    },
+    {
+      "shape": "##…:has-text",
+      "count": 307,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "cjx-annoyance": 1,
+        "easylist": 221,
+        "easylist-china": 4,
+        "ublock-badware": 9,
+        "ublock-filters": 63,
+        "ublock-privacy": 1,
+        "ublock-quick-fixes": 7,
+        "ublock-unbreak": 1
+      },
+      "example": "discord.com#?#.wrapper__0d616:has-text(Get Reward)"
+    },
+    {
+      "shape": "…$urlskip",
+      "count": 197,
+      "bucket": "adguardModifier",
+      "lists": {
+        "ublock-privacy": 197
+      },
+      "example": "||click.redditmail.com/CL0/$urlskip=/\\/CL0\\/(http.*?)\\/\\d\\/[a-f0-9-]+\\// -uricomponent"
+    },
+    {
+      "shape": "##…:matches-path",
+      "count": 177,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "adguard-annoyances": 93,
+        "adguard-annoyances-mobile": 22,
+        "adguard-annoyances-other": 12,
+        "adguard-annoyances-widgets": 10,
+        "adguard-base": 21,
+        "adguard-mobile": 14,
+        "ublock-filters": 4,
+        "ublock-unbreak": 1
+      },
+      "example": "facebook.com##:matches-path(/gaming) body > .AdBox.Ad.advert ~ div[class]:style(display: block !important;)"
+    },
+    {
+      "shape": "…$denyallow",
+      "count": 118,
+      "bucket": "extras",
+      "lists": {
+        "adguard-base": 21,
+        "adguard-chinese": 14,
+        "anti-ad": 2,
+        "ublock-filters": 76,
+        "ublock-privacy": 1,
+        "ublock-quick-fixes": 4
+      },
+      "example": "$image,3p,denyallow=cdn77.org|globalcdn.co|others-cdn.com|rncdn7.com|sb-cd.com|stream.highwebmedia.com|thumb.live.mmcdn.com|upsiloncdn.net|xvideos-cdn.com|youji"
+    },
+    {
+      "shape": "…$removeparam",
+      "count": 114,
+      "bucket": "extras",
+      "lists": {
+        "adguard-base": 2,
+        "adguard-url-tracking": 100,
+        "ublock-privacy": 10,
+        "ublock-unbreak": 2
+      },
+      "example": "||g.doubleclick.net/gampad/ads?$xhr,removeparam=/^(cookie|ga_|u_)/,domain=soranews24.com"
+    },
+    {
+      "shape": "…$/regex/ 整条规则",
+      "count": 104,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-base": 10,
+        "adguard-chinese": 3,
+        "adguard-dns": 7,
+        "adguard-mobile": 2,
+        "adguard-tracking": 1,
+        "adguard-url-tracking": 4,
+        "anti-ad": 17,
+        "easyprivacy": 1,
+        "ublock-badware": 16,
+        "ublock-privacy": 34,
+        "ublock-quick-fixes": 9
+      },
+      "example": "/^88\\.208\\.22\\.[1234]$/"
+    },
+    {
+      "shape": "…$removeparam (exception)",
+      "count": 73,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-url-tracking": 72,
+        "ublock-unbreak": 1
+      },
+      "example": "@@||eneba.com^$removeparam=utm_source"
+    },
+    {
+      "shape": "…##^ HTML filtering",
+      "count": 71,
+      "bucket": "adguardModifier",
+      "lists": {
+        "easyprivacy": 1,
+        "ublock-badware": 1,
+        "ublock-filters": 30,
+        "ublock-privacy": 14,
+        "ublock-quick-fixes": 6,
+        "ublock-unbreak": 19
+      },
+      "example": "abema.tv##^script:has-text(NREUM)"
+    },
+    {
+      "shape": "##…:matches-css",
+      "count": 69,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "adguard-annoyances": 10,
+        "adguard-annoyances-mobile": 9,
+        "adguard-base": 35,
+        "adguard-chinese": 5,
+        "adguard-mobile": 6,
+        "ublock-filters": 3,
+        "ublock-quick-fixes": 1
+      },
+      "example": "fights.cz##.d-none.d-xl-block:matches-css(after, content: Reklama)"
+    },
+    {
+      "shape": "##+js(google-ima, …)",
+      "count": 34,
+      "bucket": "scriptlet",
+      "lists": {
+        "adguard-annoyances": 1,
+        "adguard-annoyances-mobile": 1,
+        "adguard-base": 32
+      },
+      "example": "sporteurope.tv##+js(google-ima)"
+    },
+    {
+      "shape": "…$redirect/$redirect-rule 缺参数",
+      "count": 34,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-tracking": 1,
+        "easyprivacy": 1,
+        "ublock-privacy": 1,
+        "ublock-unbreak": 31
+      },
+      "example": "@@||google-analytics.com/analytics.js$redirect-rule,script,domain=mond.how"
+    },
+    {
+      "shape": "…$removeparam",
+      "count": 34,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-base": 6,
+        "adguard-url-tracking": 24,
+        "ublock-filters": 1,
+        "ublock-privacy": 1,
+        "ublock-unbreak": 2
+      },
+      "example": "&siteid=*&adid=$removeparam"
+    },
+    {
+      "shape": "…$replace",
+      "count": 33,
+      "bucket": "adguardModifier",
+      "lists": {
+        "ublock-filters": 16,
+        "ublock-privacy": 2,
+        "ublock-quick-fixes": 14,
+        "ublock-unbreak": 1
+      },
+      "example": "||www.youtube.com/playlist?list=$xhr,1p,replace=/\"adPlacements\"/\"no_ads\"/"
+    },
+    {
+      "shape": "##+js(trusted-prevent-dom-bypass, …)",
+      "count": 30,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-quick-fixes": 30
+      },
+      "example": "www.youtube.com##+js(trusted-prevent-dom-bypass, Node.prototype.appendChild, fetch)"
+    },
+    {
+      "shape": "…$permissions",
+      "count": 29,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-annoyances": 8,
+        "adguard-annoyances-mobile": 8,
+        "adguard-tracking": 2,
+        "ublock-privacy": 10,
+        "ublock-unbreak": 1
+      },
+      "example": "$domain=nzherald.co.nz,permissions=geolocation=()"
+    },
+    {
+      "shape": "…$/regex/ 域匹配",
+      "count": 28,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-annoyances": 7,
+        "adguard-annoyances-mobile": 3,
+        "adguard-annoyances-other": 1,
+        "adguard-base": 12,
+        "adguard-chinese": 5
+      },
+      "example": "/mmsbee\\d+\\.com/##+js(prevent-fetch, pagead2.googlesyndication.com)"
+    },
+    {
+      "shape": "…$ipaddress",
+      "count": 28,
+      "bucket": "adguardModifier",
+      "lists": {
+        "ublock-badware": 28
+      },
+      "example": "$doc,ipaddress=185.100.85.248"
+    },
+    {
+      "shape": "…$cname",
+      "count": 27,
+      "bucket": "adguardModifier",
+      "lists": {
+        "ublock-unbreak": 27
+      },
+      "example": "@@||player.fm^$cname"
+    },
+    {
+      "shape": "##+js(noeval, …)",
+      "count": 24,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-filters": 24
+      },
+      "example": "youjizz.com##+js(noeval)"
+    },
+    {
+      "shape": "##+js(rpnt, …)",
+      "count": 23,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-filters": 9,
+        "ublock-quick-fixes": 8,
+        "ublock-unbreak": 6
+      },
+      "example": "web.facebook.com,www.facebook.com##+js(rpnt, script, '/\"[a-z0-9]{8}\":true,/g', , condition, compat_iframe_token)"
+    },
+    {
+      "shape": "…$elemhide",
+      "count": 22,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-base": 13,
+        "adguard-chinese": 4,
+        "adguard-mobile": 1,
+        "easylist-china": 4
+      },
+      "example": "@@||dozenofelites.com^$elemhide"
+    },
+    {
+      "shape": "cosmetic filter error: scriptlet args could not be parsed",
+      "count": 21,
+      "bucket": "parseFailure",
+      "lists": {
+        "adguard-annoyances": 2,
+        "adguard-annoyances-mobile": 2,
+        "adguard-base": 5,
+        "ublock-filters": 11,
+        "ublock-quick-fixes": 1
+      },
+      "example": "iphonechecker.herokuapp.com##+js(no-setTimeout-if, \"hidden\"===r.visibility)"
+    },
+    {
+      "shape": "##+js(trusted-set-cookie, …)",
+      "count": 19,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-privacy": 18,
+        "ublock-unbreak": 1
+      },
+      "example": "microsoft.com##+js(trusted-set-cookie, MicrosoftApplicationsTelemetryDeviceId, , 0)"
+    },
+    {
+      "shape": "network filter error: unrecognised option",
+      "count": 19,
+      "bucket": "parseFailure",
+      "lists": {
+        "adguard-base": 1,
+        "adguard-mobile": 1,
+        "adguard-url-tracking": 2,
+        "ublock-badware": 3,
+        "ublock-filters": 2,
+        "ublock-privacy": 6,
+        "ublock-quick-fixes": 4
+      },
+      "example": "*$script,3p,denyallow=tvableon.me|mega.co.nz|mega.nz|libs.baidu.com|ilfcdn.li|bytecdntp.com|doodcdn.io|intensedebate.com|vixcloud.co|rsc.cdn77.org|linkvertise.c"
+    },
+    {
+      "shape": "##+js(popads-dummy, …)",
+      "count": 18,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-filters": 18
+      },
+      "example": "europixhd.*,hdeuropix.*,topeuropix.*##+js(popads-dummy)"
+    },
+    {
+      "shape": "…#@# 无域名",
+      "count": 18,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-base": 6,
+        "adguard-chinese": 1,
+        "ublock-filters": 4,
+        "ublock-unbreak": 7
+      },
+      "example": "#@#.ad-box"
+    },
+    {
+      "shape": "…$genericblock",
+      "count": 18,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-base": 1,
+        "adguard-chinese": 8,
+        "adguard-tracking": 1,
+        "easylist-china": 8
+      },
+      "example": "@@||adguardpartner.com^$generichide,genericblock"
+    },
+    {
+      "shape": "##…:matches-attr",
+      "count": 17,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "adguard-annoyances": 4,
+        "adguard-annoyances-mobile": 2,
+        "adguard-base": 5,
+        "adguard-mobile": 2,
+        "ublock-filters": 3,
+        "ublock-quick-fixes": 1
+      },
+      "example": "pussyspace.com,pussyspace.net##a:matches-attr(/^on/=/event/)"
+    },
+    {
+      "shape": "##+js(trusted-replace-argument, …)",
+      "count": 16,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-badware": 1,
+        "ublock-filters": 1,
+        "ublock-privacy": 2,
+        "ublock-quick-fixes": 10,
+        "ublock-unbreak": 2
+      },
+      "example": "bild.de##+js(trusted-replace-argument, JSON.parse, 0, repl:/\"adBlockWallEnabled\":true/\"adBlockWallEnabled\":false/, condition, adBlockWallEnabled)"
+    },
+    {
+      "shape": "##…:remove-attr()",
+      "count": 15,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "ublock-filters": 1,
+        "ublock-privacy": 8,
+        "ublock-unbreak": 6
+      },
+      "example": "dvdgayonline.com###clickfakeplayer:remove-attr(href)"
+    },
+    {
+      "shape": "…$popunder",
+      "count": 15,
+      "bucket": "adguardModifier",
+      "lists": {
+        "ublock-filters": 14,
+        "ublock-unbreak": 1
+      },
+      "example": "*$popunder,domain=realgfporn.com"
+    },
+    {
+      "shape": "…$reason",
+      "count": 14,
+      "bucket": "adguardModifier",
+      "lists": {
+        "ublock-badware": 9,
+        "ublock-privacy": 5
+      },
+      "example": "||adjust.com^$doc,reason=tracker"
+    },
+    {
+      "shape": "##+js(nofab, …)",
+      "count": 12,
+      "bucket": "scriptlet",
+      "lists": {
+        "adguard-base": 2,
+        "ublock-filters": 10
+      },
+      "example": "sport-tv-guide.live,tecnotutoshd.net,androidaba.com,cshort.org,highresolutionmusic.com,tvserial.it,kodvizit.com,123link.biz,inmanga.com,eskago.pl#@#+js(nofab)"
+    },
+    {
+      "shape": "##…:xpath",
+      "count": 12,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "adguard-base": 1,
+        "easylist": 1,
+        "ublock-filters": 10
+      },
+      "example": "producthunt.com##[data-test^=\"homepage-section-\"] > section[data-container]:xpath(self::*[.//img[@alt=\"Promoted\"]/@src != //div[starts-with(@data-test,\"homepage"
+    },
+    {
+      "shape": "##+js(trusted-replace-xhr-response, …)",
+      "count": 9,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-filters": 6,
+        "ublock-quick-fixes": 3
+      },
+      "example": "tv.youtube.com##+js(trusted-replace-xhr-response, '\"adPlacements\"', '\"no_ads\"', /playlist\\?list=|\\/player(?:\\?.+)?$|watch\\?[tv]=/)"
+    },
+    {
+      "shape": "…$header",
+      "count": 9,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-base": 9
+      },
+      "example": "://www.*.com/*.css|$script,3p,header=popads-node"
+    },
+    {
+      "shape": "##+js(trusted-create-html, …)",
+      "count": 7,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-quick-fixes": 7
+      },
+      "example": "pvpoke-re.com##+js(trusted-create-html, .adsbygoogle.nitro-body:not(:has(#aswift_1_host)), <div id=\"aswift_4_host\" style=\"height: 250px; width: 300px;\"><iframe "
+    },
+    {
+      "shape": "##+js(trusted-edit-inbound-object, …)",
+      "count": 7,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-quick-fixes": 7
+      },
+      "example": "www.youtube.com##+js(trusted-edit-inbound-object, JSON.stringify, 0, [?.attestationRequest][?.context.client.userAgent*=\"channel\"].context.client[?.clientName=="
+    },
+    {
+      "shape": "##+js(trusted-rpfr, …)",
+      "count": 7,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-filters": 2,
+        "ublock-privacy": 1,
+        "ublock-quick-fixes": 4
+      },
+      "example": "www.youtube.com##+js(trusted-rpfr, '\"adPlacements\"', '\"no_ads\"', player?)"
+    },
+    {
+      "shape": "…$uritransform",
+      "count": 7,
+      "bucket": "adguardModifier",
+      "lists": {
+        "ublock-privacy": 5,
+        "ublock-quick-fixes": 2
+      },
+      "example": "||amazon.com/s/ref=$doc,uritransform=/\\/ref=[^\\/?#]+//"
+    },
+    {
+      "shape": "…$removeparam=/regex/",
+      "count": 6,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-url-tracking": 6
+      },
+      "example": "$removeparam=/^at_custom/"
+    },
+    {
+      "shape": "##+js(trusted-rpnt, …)",
+      "count": 5,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-quick-fixes": 2,
+        "ublock-unbreak": 3
+      },
+      "example": "9to5google.com,9to5mac.com##+js(trusted-rpnt, script, (function($), '(function(){const a=document.createElement(\"div\");document.documentElement.appendChild(a),s"
+    },
+    {
+      "shape": "##…:matches-css-before",
+      "count": 5,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "ublock-filters": 4,
+        "ublock-quick-fixes": 1
+      },
+      "example": "indiatimes.com,samayam.com##[onclick] p:matches-css-before(content:/Ad /):xpath(../..):not(p:has-text(/MAHA/i)):not(p:has-text(/Times/i))"
+    },
+    {
+      "shape": "…$csp 与资源类型组合",
+      "count": 5,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-base": 1,
+        "easylist": 1,
+        "ublock-filters": 1,
+        "ublock-privacy": 1,
+        "ublock-unbreak": 1
+      },
+      "example": "@@||google.com/recaptcha/$csp,subdocument"
+    },
+    {
+      "shape": "##+js(trusted-set-attr, …)",
+      "count": 4,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-quick-fixes": 4
+      },
+      "example": "pvpoke-re.com##+js(trusted-set-attr, ins.adsbygoogle:has(> #aswift_0_host), data-ad-status, unfilled)"
+    },
+    {
+      "shape": "##…:remove-class()",
+      "count": 4,
+      "bucket": "proceduralApplied",
+      "lists": {
+        "ublock-privacy": 1,
+        "ublock-unbreak": 3
+      },
+      "example": "dmax.de##.block-user:remove-class(block-user)"
+    },
+    {
+      "shape": "cosmetic filter error: procedural filters can only accept a single CSS selector",
+      "count": 4,
+      "bucket": "parseFailure",
+      "lists": {
+        "adguard-annoyances": 1,
+        "adguard-annoyances-widgets": 1,
+        "ublock-filters": 2
+      },
+      "example": "blog.livedoor.jp##:matches-path(/misopan_news) #headline, .article-outer-3 > div#ad2 + div.article-option"
+    },
+    {
+      "shape": "cosmetic filter error: unsupported syntax",
+      "count": 4,
+      "bucket": "parseFailure",
+      "lists": {
+        "ublock-privacy": 2,
+        "ublock-quick-fixes": 2
+      },
+      "example": "arstechnica.com,dermnetnz.org##.gsc-webResult a[data-cturl]:remove-attr(/^data-ct/)"
+    },
+    {
+      "shape": "##+js(popads.net, …)",
+      "count": 3,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-filters": 3
+      },
+      "example": "imgshots.com##+js(popads.net)"
+    },
+    {
+      "shape": "##+js(trusted-prevent-fetch, …)",
+      "count": 3,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-filters": 2,
+        "ublock-unbreak": 1
+      },
+      "example": "duden.de##+js(trusted-prevent-fetch, googlesyndication.com/pagead/js/adsbygoogle.js, length:20000, {\"headers\":{\"content-type\":\"text/javascript; charset=UTF-8\"}}"
+    },
+    {
+      "shape": "##+js(trusted-replace-outbound-text, …)",
+      "count": 3,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-quick-fixes": 2,
+        "ublock-unbreak": 1
+      },
+      "example": "funradio.fr##+js(trusted-replace-outbound-text, String.prototype.trim, /^STOP_GTM_WARNING$/, IMA_ADS)"
+    },
+    {
+      "shape": "##+js(trusted-set, …)",
+      "count": 3,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-unbreak": 3
+      },
+      "example": "seclore.com##+js(trusted-set, _omapp.scripts.geolocation, '{\"value\": {\"status\":\"loaded\",\"object\":null,\"data\":{\"country\":{\"shortName\":\"\",\"longName\":\"\"},\"administ"
+    },
+    {
+      "shape": "…$domain 仅含排除项",
+      "count": 3,
+      "bucket": "adguardModifier",
+      "lists": {
+        "adguard-chinese": 2,
+        "adguard-tracking": 1
+      },
+      "example": "@@||cdn.taboola.com/libtrc/unpkg/tfa.js$domain=/anitube\\d+\\.vip/"
+    },
+    {
+      "shape": "…$strict3p",
+      "count": 3,
+      "bucket": "adguardModifier",
+      "lists": {
+        "ublock-privacy": 2,
+        "ublock-unbreak": 1
+      },
+      "example": "||fingerprint.com^$strict3p,domain=fingerprint.com|~dev.fingerprint.com|~docs.fingerprint.com|~dashboard.fingerprint.com"
+    },
+    {
+      "shape": "##+js(trusted-override-element-method, …)",
+      "count": 2,
+      "bucket": "scriptlet",
+      "lists": {
+        "ublock-quick-fixes": 2
+      },
+      "example": "pvpoke-re.com##+js(trusted-override-element-method, HTMLIFrameElement.prototype.remove, iframe[src^=\"https://googleads.g.doubleclick.net/pagead/ads?client=ca-pu"
+    }
+  ],
+  "missingLists": []
+}

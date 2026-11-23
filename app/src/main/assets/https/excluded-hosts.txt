@@ -1,0 +1,128 @@
+! 永不解密的域名（HTTPS 过滤排除名单，M3a）。
+!
+! 命中这里的域名（含其子域）即使所属应用在浏览器名单里也绝不解密：客户端看到的是源站真实证书，
+! 与未开启 ZShield 时完全一致。用途有三类：
+!
+! 1. **金融与支付**：普遍使用证书钉扎或自带校验证书库，解密必然握手失败；
+! 2. **政务与实名**：钉扎之外还常带客户端证书，改动链会直接报错；
+! 3. **已知钉扎的大型服务**：解密只会换来报错和自动放行，不如直接放行，省一次握手。
+!
+! 一行一个域名；`#` 之后为注释；子域自动包含（列 `alipay.com` 即覆盖 `pay.alipay.com`）。
+!
+! 来源：
+! - 各家银行/支付机构的公开主域名（官网公布的对客域名）；
+! - AdGuard 与 uBlock Origin 社区长期维护的"不要 MITM"清单中反复出现的条目；
+! - 本项目在 Pixel 5 上实测握手失败的域名。
+!
+! 这是一份保守名单，宁可少解密也不要让用户付不了款。发现新的钉扎应用时在这里追加即可。
+
+# --- 支付与钱包 ---
+alipay.com
+alipayobjects.com
+mybank.cn
+tenpay.com
+weixin.qq.com
+wechat.com
+unionpay.com
+unionpayintl.com
+95516.com
+paypal.com
+paypalobjects.com
+stripe.com
+stripe.network
+braintreepayments.com
+squareup.com
+
+# --- 银行（中国）---
+icbc.com.cn
+icbc.com
+ccb.com
+abchina.com
+boc.cn
+bankofchina.com
+bankcomm.com
+cmbchina.com
+psbc.com
+cebbank.com
+cib.com.cn
+citicbank.com
+spdb.com.cn
+cmbc.com.cn
+pingan.com
+pingan.com.cn
+bank.pingan.com
+hxb.com.cn
+cgbchina.com.cn
+bankofbeijing.com.cn
+njcb.com.cn
+srcb.com
+nbcb.com.cn
+
+# --- 银行（国际）---
+hsbc.com
+hsbc.com.cn
+citibank.com
+citigroup.com
+bankofamerica.com
+chase.com
+wellsfargo.com
+sc.com
+dbs.com
+dbs.com.cn
+uob.com.sg
+ocbc.com
+
+# --- 券商与基金 ---
+eastmoney.com
+10jqka.com.cn
+xueqiu.com
+gtja.com
+htsc.com.cn
+cmschina.com
+citics.com
+swhysc.com
+fund.eastmoney.com
+
+# --- 政务与实名 ---
+gov.cn
+12306.cn
+chinatax.gov.cn
+12333.gov.cn
+si.12333.gov.cn
+creditchina.gov.cn
+gsxt.gov.cn
+miit.gov.cn
+12345.gov.cn
+
+# --- 已知钉扎的大型服务 ---
+! 这些服务在自己的 App 里固定证书，或对用户 CA 有额外校验：解密只会失败。
+apple.com
+icloud.com
+mzstatic.com
+microsoft.com
+live.com
+office.com
+google.com
+googleapis.com
+gstatic.com
+youtube.com
+android.com
+cloudflare.com
+amazon.com
+amazonaws.com
+aws.amazon.com
+netflix.com
+spotify.com
+whatsapp.com
+whatsapp.net
+telegram.org
+t.me
+signal.org
+twitter.com
+x.com
+facebook.com
+instagram.com
+meta.com
+tiktok.com
+byteoversea.com
+ibytedtos.com

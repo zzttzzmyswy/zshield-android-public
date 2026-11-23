@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Window theme. The Compose UI draws everything itself (ZShieldTheme); this only sets the window
+      background to the brand surface so there is no white flash before the first frame, and gives the
+      View-based diagnostics screen a matching light/dark base (values-night overrides the parent).
+    -->
+    <style name="Theme.ZShield" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/zshield_surface</item>
+        <item name="android:colorAccent">@color/zshield_primary</item>
+        <item name="android:colorPrimary">@color/zshield_primary</item>
+    </style>
+</resources>

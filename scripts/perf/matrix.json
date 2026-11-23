@@ -1,0 +1,178 @@
+{
+  "_comment": "Request matrix shared byte-for-byte by both builds (MYS-2826). `kind` uses RequestKind::as_str spellings; an absent `referer` means first-party, as the production request model does. `group` decides how a case may be used: `equal` cases are the ones both builds must decide identically by design, and they are the only ones a timing statement may rest on; `capability` cases deliberately exercise semantics only one build implements (AdGuard's 'an untyped $removeparam rule matches a document request only') and are reported as capability changes, never as work.",
+  "version": 2,
+  "cases": [
+    {
+      "id": "noquery-script",
+      "group": "equal",
+      "label": "script, no query at all",
+      "method": "GET",
+      "url": "https://cdn.example.com/assets/app.js",
+      "referer": "https://www.example.com/",
+      "kind": "script",
+      "expectation": "no rewrite: nothing to parse"
+    },
+    {
+      "id": "noquery-document",
+      "group": "equal",
+      "label": "document, no query at all",
+      "method": "GET",
+      "url": "https://www.example.com/index.html",
+      "kind": "document",
+      "expectation": "no rewrite: nothing to parse"
+    },
+    {
+      "id": "miss-script",
+      "group": "equal",
+      "label": "script, query, no rule names it",
+      "method": "GET",
+      "url": "https://cdn.example.com/assets/app.js?v=3&build=8123",
+      "referer": "https://www.example.com/",
+      "kind": "script",
+      "expectation": "no rewrite: the query parses, nothing matches"
+    },
+    {
+      "id": "miss-xhr",
+      "group": "equal",
+      "label": "xhr, query, no rule names it",
+      "method": "GET",
+      "url": "https://api.example.com/v1/items?page=2&sort=new",
+      "referer": "https://www.example.com/",
+      "kind": "xmlhttprequest",
+      "expectation": "no rewrite: nothing matches"
+    },
+    {
+      "id": "miss-document",
+      "group": "equal",
+      "label": "document, query, no rule names it",
+      "method": "GET",
+      "url": "https://www.example.com/page?page=2&sort=new",
+      "kind": "document",
+      "expectation": "no rewrite: nothing matches"
+    },
+    {
+      "id": "hit-typed-xhr",
+      "group": "equal",
+      "label": "xhr, $xmlhttprequest-typed rule hit",
+      "method": "GET",
+      "url": "https://api.example.com/v1/feed?track=abc&keep=2",
+      "referer": "https://www.example.com/",
+      "kind": "xmlhttprequest",
+      "expectation": "rewrite: track removed, keep and order preserved"
+    },
+    {
+      "id": "hit-typed-image",
+      "group": "equal",
+      "label": "image, $image-typed rule hit",
+      "method": "GET",
+      "url": "https://cdn.example.com/a.png?w=640&h=480",
+      "referer": "https://www.example.com/",
+      "kind": "image",
+      "expectation": "rewrite: w removed, h preserved"
+    },
+    {
+      "id": "miss-typed-wrong-kind",
+      "group": "equal",
+      "label": "script, the $image-typed rule must not fire",
+      "method": "GET",
+      "url": "https://cdn.example.com/a.js?w=640&h=480",
+      "referer": "https://www.example.com/",
+      "kind": "script",
+      "expectation": "no rewrite: the rule is $image"
+    },
+    {
+      "id": "hit-document-navigation",
+      "group": "equal",
+      "label": "document navigation, untyped rule hit",
+      "method": "GET",
+      "url": "https://shop.example.com/product?utm_source=news&id=9&keep=1",
+      "kind": "document",
+      "expectation": "rewrite: utm_source removed; the relay turns this into a 302, which this benchmark does not model"
+    },
+    {
+      "id": "hit-document-post",
+      "group": "equal",
+      "label": "POST navigation, untyped rule hit",
+      "method": "POST",
+      "url": "https://euronews.com/video?webPushId=abc&keep=1",
+      "referer": "https://www.example.com/",
+      "kind": "document",
+      "expectation": "rewrite: webPushId removed; the body is the relay's concern, the URL is this function's"
+    },
+    {
+      "id": "hit-document-zhihu",
+      "group": "equal",
+      "label": "document, host-scoped untyped rule hit",
+      "method": "GET",
+      "url": "https://www.zhihu.com/question/1?utm_psn=2&share_code=xyz&keep=1",
+      "kind": "document",
+      "expectation": "rewrite: utm_psn removed, share_code and keep preserved"
+    },
+    {
+      "id": "cap-empty-value-param",
+      "group": "capability",
+      "label": "document, empty-valued parameter (utm_source=): candidate removes, baseline keeps",
+      "method": "GET",
+      "url": "https://shop.example.com/p?utm_source=&ref=abc&keep#frag",
+      "kind": "document",
+      "expectation": "differs by design: $removeparam=name names every occurrence, including an empty value"
+    },
+    {
+      "id": "miss-duplicate-params",
+      "group": "equal",
+      "label": "duplicate parameter names, none named by a rule",
+      "method": "GET",
+      "url": "https://www.example.com/x?page=1&page=2&tag=a&tag=b",
+      "kind": "document",
+      "expectation": "no rewrite: order and duplicates preserved"
+    },
+    {
+      "id": "miss-other-host",
+      "group": "equal",
+      "label": "no referer, scoped rule names a different host",
+      "method": "GET",
+      "url": "https://other.example.net/p?utm_source=news&keep=1",
+      "kind": "document",
+      "expectation": "no rewrite: the rule is anchored at shop.example.com"
+    },
+    {
+      "id": "cap-untyped-on-xhr",
+      "group": "capability",
+      "label": "xhr, untyped rule: candidate applies document-only, baseline rewrites",
+      "method": "GET",
+      "url": "https://shop.example.com/product?utm_source=news&id=9&keep=1",
+      "referer": "https://www.example.com/",
+      "kind": "xmlhttprequest",
+      "expectation": "differs by design: AdGuard makes an untyped $removeparam rule a document-only rule"
+    },
+    {
+      "id": "miss-untyped-on-script",
+      "group": "equal",
+      "label": "script, untyped rule: candidate applies document-only, baseline rewrites",
+      "method": "GET",
+      "url": "https://shop.example.com/p.js?utm_source=news&keep=1",
+      "referer": "https://www.example.com/",
+      "kind": "script",
+      "expectation": "no rewrite: an untyped $removeparam rule is document-only, and the engine applies it to document/subdocument/xhr only"
+    },
+    {
+      "id": "miss-untyped-on-image",
+      "group": "equal",
+      "label": "image, untyped rule: candidate applies document-only, baseline rewrites",
+      "method": "GET",
+      "url": "https://shop.example.com/p.png?utm_source=news&keep=1",
+      "referer": "https://www.example.com/",
+      "kind": "image",
+      "expectation": "no rewrite: an untyped $removeparam rule is document-only, and the engine applies it to document/subdocument/xhr only"
+    },
+    {
+      "id": "hit-document-fragment",
+      "group": "equal",
+      "label": "document, hit with a fragment",
+      "method": "GET",
+      "url": "https://shop.example.com/p?utm_source=news&ref=abc&keep#frag",
+      "kind": "document",
+      "expectation": "rewrite: both named parameters removed, fragment kept byte for byte"
+    }
+  ]
+}

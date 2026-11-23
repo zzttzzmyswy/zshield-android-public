@@ -1,0 +1,22 @@
+selectors 0.32.0 — 许可证声明位置说明 / where this crate states its terms
+
+The published `selectors` crate does not ship a LICENSE file. Every source file carries the
+MPL-2.0 Exhibit A notice in its header instead, which MPL-2.0 §3.1 and the Exhibit itself allow
+("If it is not possible or desirable to put the notice in a particular file, then You may include
+the notice in a location ... where a recipient would be likely to look for such a notice").
+
+Verbatim header of `lib.rs` in the published crate:
+
+    /* This Source Code Form is subject to the terms of the Mozilla Public
+     * License, v. 2.0. If a copy of the MPL was not distributed with this
+     * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+The license text itself is the standard MPL-2.0, which is packaged in this directory as
+`mozilla-adblock-0.13.5-LICENSE.txt` (from the adblock crate, byte-identical to the canonical MPL).
+
+Upstream project: https://github.com/servo/stylo (the `selectors` crate lives in `selectors/`).
+Version 0.32.0, unmodified — see core/Cargo.lock.
+
+Note for reviewers: because the notice is per-file rather than per-crate, a tool that only looks for
+`LICENSE`/`COPYING` files will report this crate as having no notice. That is a false negative, not a
+missing obligation; this file exists so the next audit does not have to rediscover it.

@@ -1,0 +1,9 @@
+! The own-evaluation work both builds do: `$removeparam=/regex/` forms, which the pinned engine
+! refuses outright, so each build must evaluate them itself. Every rule here carries the content type
+! its case uses, so neither build's "an untyped rule is document-only" rule can make them disagree —
+! that semantic is measured separately by the capability cases, not folded into a cost comparison.
+||ad.doubleclick.net/ddm/clk/$removeparam=/^utm_custom\d+/
+||shop.example.com^$document,removeparam=/^utm_/
+||api.example.com^$xmlhttprequest,removeparam=/^track/
+||cdn.example.com^$image,removeparam=/^w$/
+||news.example.com^$xmlhttprequest,removeparam=/^pjclid/
